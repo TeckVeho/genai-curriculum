@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>助成金活用のご案内｜物流事務DX人材育成プログラム</title>
+  <style>
+    @page { size: A4; margin: 16mm 14mm; }
+    @media print {
+      .no-print { display: none !important; }
+      body { font-size: 10pt; }
+      .hero { padding: 24px 22px !important; }
+      .section { page-break-inside: avoid; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Meiryo", sans-serif;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0;
+      color: #1a1a1a;
+      line-height: 1.75;
+      background: #fff;
+    }
+
+    /* ── ヒーロー ── */
+    .hero {
+      background: linear-gradient(135deg, #0c4a3e 0%, #0d7356 60%, #10b981 100%);
+      color: #fff;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; right: -30px; top: -30px;
+      width: 180px; height: 180px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+    .hero-label {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 4px;
+      font-size: 9pt;
+      padding: 2px 10px;
+      margin-bottom: 10px;
+    }
+    .hero h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+    .hero-sub {
+      font-size: 10.5pt;
+      opacity: 0.9;
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    /* ── 共通 ── */
+    .content { padding: 0 24px 20px; }
+    .section { margin-top: 20px; }
+    h2 {
+      font-size: 12pt;
+      color: #065f46;
+      border-left: 4px solid #10b981;
+      background: #ecfdf5;
+      padding: 6px 12px;
+      margin-bottom: 10px;
+    }
+    p.body-text {
+      font-size: 10pt;
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+      margin-bottom: 6px;
+    }
+    thead th {
+      background: #065f46;
+      color: #fff;
+      padding: 7px 8px;
+      text-align: center;
+      border: 1px solid #065f46;
+      font-size: 9pt;
+    }
+    tbody th {
+      background: #f0fdf4;
+      padding: 7px 10px;
+      text-align: left;
+      font-weight: bold;
+      border: 1px solid #a7f3d0;
+      vertical-align: top;
+      width: 32%;
+    }
+    tbody td {
+      padding: 7px 10px;
+      border: 1px solid #a7f3d0;
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) td { background: #f8fdfb; }
+    .center { text-align: center; }
+    .right  { text-align: right; }
+    .bold   { font-weight: bold; }
+    .total-row td, .total-row th {
+      background: #d1fae5 !important;
+      font-weight: bold;
+    }
+    .highlight-row td {
+      background: #fef9c3 !important;
+      font-weight: bold;
+      color: #854d0e;
+    }
+
+    /* ── シミュレーションボックス ── */
+    .sim-box {
+      border: 2px solid #10b981;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 14px 0;
+      background: #f0fdf4;
+    }
+    .sim-box h3 {
+      font-size: 11pt;
+      color: #065f46;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .sim-result {
+      text-align: center;
+      margin-top: 12px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+    }
+    .sim-result .label { font-size: 10pt; color: #475569; }
+    .sim-result .value {
+      font-size: 20pt; font-weight: bold; color: #065f46;
+      margin: 2px 0;
+    }
+    .sim-result .sub { font-size: 9pt; color: #64748b; }
+
+    /* ── 注意書き ── */
+    .notice {
+      background: #fef9c3;
+      border: 1px solid #ca8a04;
+      border-left: 4px solid #ca8a04;
+      padding: 10px 14px;
+      border-radius: 4px;
+      font-size: 9.5pt;
+      margin: 12px 0;
+    }
+    .important-box {
+      background: #fff;
+      border: 2px solid #dc2626;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 12px 0;
+    }
+    .important-box h3 {
+      font-size: 10.5pt;
+      color: #dc2626;
+      margin-bottom: 6px;
+    }
+    .important-box ul {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 9.5pt;
+    }
+    .important-box li { margin-bottom: 4px; }
+
+    /* ── フロー ── */
+    .flow {
+      display: flex;
+      align-items: stretch;
+      gap: 6px;
+      margin: 10px 0;
+      flex-wrap: wrap;
+    }
+    .flow-step {
+      flex: 1;
+      min-width: 120px;
+      background: #f0fdf4;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+      padding: 10px 8px;
+      text-align: center;
+      position: relative;
+    }
+    .flow-step .step-num {
+      display: inline-block;
+      background: #065f46;
+      color: #fff;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      font-size: 9pt;
+      line-height: 22px;
+      margin-bottom: 4px;
+    }
+    .flow-step .step-title {
+      display: block;
+      font-size: 9pt;
+      font-weight: bold;
+      color: #065f46;
+      margin-bottom: 2px;
+    }
+    .flow-step .step-desc {
+      font-size: 8pt;
+      color: #475569;
+    }
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      font-size: 14pt;
+      color: #10b981;
+    }
+
+    .note {
+      font-size: 8.5pt;
+      color: #64748b;
+      margin: 4px 0 0 2px;
+    }
+
+    /* ── フッター ── */
+    .footer {
+      background: #f1f5f9;
+      border-top: 2px solid #cbd5e1;
+      padding: 14px 24px;
+      margin-top: 18px;
+      font-size: 9pt;
+      color: #475569;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3px 14px;
+    }
+    .footer-label { font-weight: bold; }
+
+    .print-btn {
+      background: #065f46; color: white; border: none;
+      padding: 10px 28px; border-radius: 6px; cursor: pointer;
+      font-size: 11pt; margin: 16px 24px; font-family: inherit;
+    }
+    .print-btn:hover { background: #064e3b; }
+
+    .disclaimer {
+      font-size: 8pt;
+      color: #94a3b8;
+      border-top: 1px solid #e2e8f0;
+      padding: 10px 24px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn no-print" onclick="window.print()">&#128438; PDFとして印刷・保存</button>
+
+  <!-- ========== ヒーロー ========== -->
+  <div class="hero">
+    <div class="hero-label">費用負担軽減に係るご案内</div>
+    <h1>人材開発支援助成金の活用について<br>
+      <span style="font-size:12pt; font-weight:normal; opacity:0.9;">— 「事業展開等リスキリング支援コース」のご紹介 —</span>
+    </h1>
+    <div class="hero-sub">
+      本研修「物流事務DX人材育成プログラム AI活用・業務変革コース（全10回）」は、<br>
+      厚生労働省の人材開発支援助成金の対象となる可能性があります。
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ========== 制度概要 ========== -->
+    <div class="section">
+      <h2>１. 制度の概要</h2>
+      <p class="body-text">
+        <strong>人材開発支援助成金「事業展開等リスキリング支援コース」</strong>は、事業展開やDX（デジタルトランスフォーメーション）等に伴い、新たな分野で必要となる知識・技能を習得させるための訓練を実施した事業主に対して、訓練経費や訓練期間中の賃金の一部を助成する厚生労働省の制度です。
+      </p>
+
+      <table>
+        <tbody>
+          <tr>
+            <th>対象となる訓練</th>
+            <td>事業展開・DX・GX（グリーン化）、または人事計画に基づく新職務への転換に関連する専門的な知識・技能の習得訓練</td>
+          </tr>
+          <tr>
+            <th>助成の種類</th>
+            <td><strong>経費助成</strong>（受講料等の一部）＋ <strong>賃金助成</strong>（訓練時間中の賃金の一部）</td>
+          </tr>
+          <tr>
+            <th>実訓練時間の要件</th>
+            <td>休憩・移動時間を除き <strong>10時間以上</strong> であること</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ========== 助成率 ========== -->
+    <div class="section">
+      <h2>２. 助成率・助成額</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:40%">項目</th>
+            <th style="width:30%">中小企業</th>
+            <th style="width:30%">大企業</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">経費助成率</td>
+            <td class="center bold" style="font-size:12pt; color:#065f46;">75%</td>
+            <td class="center bold" style="font-size:12pt;">60%</td>
+          </tr>
+          <tr>
+            <td class="bold">賃金助成額（1人1時間あたり）</td>
+            <td class="center bold" style="color:#065f46;">1,000円</td>
+            <td class="center bold">500円</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table style="margin-top:8px;">
+        <thead>
+          <tr>
+            <th colspan="2">経費助成の限度額（1人1訓練あたり・中小企業の場合）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>実訓練時間 10時間〜100時間未満</td><td class="center bold">30万円</td></tr>
+          <tr><td>実訓練時間 100時間〜200時間未満</td><td class="center bold">40万円</td></tr>
+          <tr><td>実訓練時間 200時間以上</td><td class="center bold">50万円</td></tr>
+        </tbody>
+      </table>
+      <p class="note">※ 助成金の支給は審査の結果によります。支給を保証するものではありません。</p>
+    </div>
+
+    <!-- ========== 本研修での試算 ========== -->
+    <div class="section">
+      <h2>３. 本研修における費用シミュレーション</h2>
+      <p class="body-text">
+        本研修を中小企業がご利用いただいた場合の助成金試算例です。<br>
+        <strong>助成金の支給額は審査結果に基づき決定されるため、以下はあくまで試算です。</strong>
+      </p>
+
+      <div class="sim-box">
+        <h3>試算例：中小企業 / 受講者5名の場合</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width:50%">項目</th>
+              <th style="width:25%">単価・率</th>
+              <th style="width:25%">金額</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="bold">A. 研修受講料（税別）</td>
+              <td class="center">1社一括</td>
+              <td class="right">400,000円</td>
+            </tr>
+            <tr>
+              <td colspan="3" style="background:#f0fdf4; color:#065f46; font-weight:bold; text-align:center;">▼ 助成金の試算（審査結果により変動）</td>
+            </tr>
+            <tr>
+              <td class="bold">B. 経費助成（受講料の75%）</td>
+              <td class="center">400,000 × 75%</td>
+              <td class="right bold" style="color:#065f46;">300,000円</td>
+            </tr>
+            <tr>
+              <td class="bold">C. 賃金助成</td>
+              <td class="center">1,000円 × 10h × 5名</td>
+              <td class="right bold" style="color:#065f46;">50,000円</td>
+            </tr>
+            <tr class="total-row">
+              <td>助成金 合計見込み（B + C）</td>
+              <td class="center">—</td>
+              <td class="right" style="font-size:12pt;">350,000円</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="sim-result">
+          <div class="label">事業主の実質的なご負担見込み（A − B − C）</div>
+          <div class="value">約 50,000円</div>
+          <div class="sub">※ 上記は中小企業・5名受講・所定労働時間内受講の場合の試算例です</div>
+        </div>
+      </div>
+
+      <p class="note">※ 受講者1人あたりの経費助成限度額は30万円（10〜100時間未満の場合）です。本研修は1社一括料金のため、受講者数による1人あたり単価が限度額以内であることをご確認ください。</p>
+      <p class="note">※ 賃金助成は、所定労働時間内に訓練を実施した場合に限ります。所定外・休日の訓練は賃金助成の対象外です。</p>
+    </div>
+
+    <!-- ========== 申請の流れ ========== -->
+    <div class="section">
+      <h2>４. 申請の流れ</h2>
+
+      <div class="flow">
+        <div class="flow-step">
+          <span class="step-num">1</span>
+          <span class="step-title">計画届の提出</span>
+          <span class="step-desc">訓練開始日の<br><strong>1か月前まで</strong>に<br>管轄の労働局へ</span>
+        </div>
+        <div class="flow-arrow">&#9654;</div>
+        <div class="flow-step">
+          <span class="step-num">2</span>
+          <span class="step-title">訓練の実施</span>
+          <span class="step-desc">計画通りに実施<br>勤怠を1分単位で<br>正確に記録</span>
+        </div>
+        <div class="flow-arrow">&#9654;</div>
+        <div class="flow-step">
+          <span class="step-num">3</span>
+          <span class="step-title">受講料のお支払い</span>
+          <span class="step-desc">事業主が<br><strong>会社名義口座</strong>から<br>全額振込</span>
+        </div>
+        <div class="flow-arrow">&#9654;</div>
+        <div class="flow-step">
+          <span class="step-num">4</span>
+          <span class="step-title">支給申請</span>
+          <span class="step-desc">訓練終了翌日から<br><strong>2か月以内</strong>に<br>労働局へ</span>
+        </div>
+        <div class="flow-arrow">&#9654;</div>
+        <div class="flow-step">
+          <span class="step-num">5</span>
+          <span class="step-title">助成金の受給</span>
+          <span class="step-desc">審査後、<br>事業主の口座へ<br>助成金が振込</span>
+        </div>
+      </div>
+
+      <div class="notice">
+        ⚠️ <strong>ご注意：</strong>受講料は助成金支給前に事業主が全額お支払いいただく必要があります。助成金は審査完了後に事業主へ直接支給されるため、立替払いとなります。
+      </div>
+    </div>
+
+    <!-- ========== 本研修の対応状況 ========== -->
+    <div class="section">
+      <h2>５. 本研修の助成金要件への対応</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:35%">主な助成金要件</th>
+            <th style="width:65%">本研修の対応状況</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">訓練内容がDX・事業展開に該当</td>
+            <td>生成AI（ChatGPT / Skills / Codex）を活用した業務プロセスのデジタル化・自動化を扱う訓練であり、DXに該当します</td>
+          </tr>
+          <tr>
+            <td class="bold">実訓練時間10時間以上</td>
+            <td>各回60分 × 全10回 ＝ <strong>合計10時間</strong>（休憩・移動時間を含まない実訓練時間）</td>
+          </tr>
+          <tr>
+            <td class="bold">広く一般に公開された訓練</td>
+            <td>公式Webサイト等にて一般募集を実施しています</td>
+          </tr>
+          <tr>
+            <td class="bold">日本国内の法人による実施</td>
+            <td>株式会社 DX研究所（日本国内法人）が企画・実施</td>
+          </tr>
+          <tr>
+            <td class="bold">受講管理</td>
+            <td>出席管理を実施し、OFF-JT実施状況報告書を作成・提出いたします</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ========== 事業主側の準備 ========== -->
+    <div class="section">
+      <h2>６. 申請にあたり事業主様にご準備いただくこと</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:5%"></th>
+            <th style="width:35%">準備事項</th>
+            <th style="width:60%">内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="center bold">1</td>
+            <td class="bold">職業能力開発推進者の選任</td>
+            <td>社内担当者（課長級以上が望ましい）を選任</td>
+          </tr>
+          <tr>
+            <td class="center bold">2</td>
+            <td class="bold">事業内職業能力開発計画の策定・周知</td>
+            <td>会社全体の育成方針を定めた計画書を作成し、全従業員に周知</td>
+          </tr>
+          <tr>
+            <td class="center bold">3</td>
+            <td class="bold">計画届の作成・提出</td>
+            <td>所定の様式（第1-1号、第1-3号 等）を作成し、訓練開始の1か月前までに管轄労働局へ提出</td>
+          </tr>
+          <tr>
+            <td class="center bold">4</td>
+            <td class="bold">受講料の全額支払い</td>
+            <td>会社名義の口座から銀行振込にて全額お支払い</td>
+          </tr>
+          <tr>
+            <td class="center bold">5</td>
+            <td class="bold">勤怠管理</td>
+            <td>訓練日のタイムカード・出勤簿を1分単位で記録（訓練時間と休憩・移動時間を区別）</td>
+          </tr>
+          <tr>
+            <td class="center bold">6</td>
+            <td class="bold">支給申請書の作成・提出</td>
+            <td>訓練終了翌日から2か月以内に、所定の様式にて管轄労働局へ提出</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">※ 中小企業の場合、計画届に「認定経営革新等支援機関」の確認印が必要です。</p>
+      <p class="note">※ 詳細な手続き・必要書類については、管轄の都道府県労働局にお問い合わせください。</p>
+    </div>
+
+    <!-- ========== 弊社からの提供書類 ========== -->
+    <div class="section">
+      <h2>７. 弊社（教育訓練機関）からご提供する書類</h2>
+      <p class="body-text">申請に必要な以下の書類は、弊社にて作成・発行いたします。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:8%">時期</th>
+            <th style="width:42%">書類名</th>
+            <th style="width:50%">内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="center bold" rowspan="3" style="vertical-align:middle;">計画届<br>提出時</td>
+            <td class="bold">訓練カリキュラム・受講案内</td>
+            <td>訓練の目的・日時・内容・場所・時間数・受講料を記載</td>
+          </tr>
+          <tr>
+            <td class="bold">契約書または申込書の写し</td>
+            <td>弊社の名称・所在地・連絡先・契約期間・受講料を記載</td>
+          </tr>
+          <tr>
+            <td class="bold">本資料（営業・説明資料一式）</td>
+            <td>費用負担軽減に係る説明資料として提出</td>
+          </tr>
+          <tr>
+            <td class="center bold" rowspan="3" style="vertical-align:middle;">支給申請時</td>
+            <td class="bold">OFF-JT実施状況報告書（様式第8-1号等）</td>
+            <td>受講者・日時・時間の実施状況を証明</td>
+          </tr>
+          <tr>
+            <td class="bold">修了証</td>
+            <td>訓練修了を証明する書類</td>
+          </tr>
+          <tr>
+            <td class="bold">請求書・領収書</td>
+            <td>受講料の内訳が明確にわかるもの</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ========== 重要事項 ========== -->
+    <div class="section">
+      <div class="important-box">
+        <h3>重要事項（必ずお読みください）</h3>
+        <ul>
+          <li>本資料は、人材開発支援助成金制度の<strong>一般的な情報提供</strong>を目的としたものです。助成金の<strong>支給を保証するものではありません。</strong></li>
+          <li>助成金の支給要件・金額・手続きは変更される場合があります。最新の情報は管轄の<strong>都道府県労働局</strong>または<strong>厚生労働省Webサイト</strong>にてご確認ください。</li>
+          <li>助成金の申請手続きは<strong>事業主様の責任</strong>において行っていただくものです。弊社が申請代行を行うものではありません。</li>
+          <li>受講料は助成金の支給有無にかかわらず、<strong>事業主様に全額ご負担</strong>いただきます。助成金は審査完了後に厚生労働省から事業主様へ直接支給されます。</li>
+          <li>費用シミュレーションの金額はあくまで<strong>試算であり、実際の支給額は審査結果に基づき決定</strong>されます。</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /.content -->
+
+  <!-- ========== フッター ========== -->
+  <div class="footer">
+    <div class="footer-grid">
+      <div class="footer-label">発行元：</div>
+      <div>株式会社 DX研究所</div>
+      <div class="footer-label">所在地：</div>
+      <div>〒102-0093 東京都千代田区平河町１－７－３第四大盛丸平河町ビル３階</div>
+      <div class="footer-label">連絡先：</div>
+      <div>TEL：03-5217-8988　MAIL：hikota@d-dxlab.com</div>
+      <div class="footer-label">担当者：</div>
+      <div>彦田</div>
+      <div class="footer-label">発行日：</div>
+      <div>　　　年　　月　　日</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    本資料は人材開発支援助成金「事業展開等リスキリング支援コース」の制度概要について一般的な情報を提供するものであり、助成金の支給を約束・保証するものではありません。
+    制度の詳細・最新情報は厚生労働省Webサイトまたは管轄の都道府県労働局にてご確認ください。
+    本資料に記載の試算金額は一定の前提条件に基づく概算であり、実際の支給額は審査結果により異なります。
+  </div>
+
+</body>
+</html>
