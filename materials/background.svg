@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#F5F5F5"/>
+      <stop offset="100%" stop-color="#EEF3F8"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#005BAC" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#02396B" stop-opacity="0.10"/>
+    </linearGradient>
+    <radialGradient id="glow-orange-1" cx="0.88" cy="0.12" r="0.55">
+      <stop offset="0%" stop-color="#F58220" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#F58220" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-orange-2" cx="0.08" cy="0.92" r="0.48">
+      <stop offset="0%" stop-color="#F58220" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#F58220" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-blue-1" cx="0.0" cy="0.0" r="0.65">
+      <stop offset="0%" stop-color="#005BAC" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#005BAC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-blue-2" cx="1.0" cy="1.0" r="0.58">
+      <stop offset="0%" stop-color="#02396B" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#02396B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bottom-bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#005BAC"/>
+      <stop offset="55%" stop-color="#02396B"/>
+      <stop offset="100%" stop-color="#02396B"/>
+    </linearGradient>
+    <linearGradient id="right-edge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#005BAC"/>
+      <stop offset="100%" stop-color="#02396B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1920" height="1080" fill="url(#base)"/>
+
+  <!-- Subtle blue wash -->
+  <rect width="1920" height="1080" fill="url(#accent-grad)"/>
+
+  <rect width="1920" height="1080" fill="url(#glow-blue-1)"/>
+  <rect width="1920" height="1080" fill="url(#glow-blue-2)"/>
+  <rect width="1920" height="1080" fill="url(#glow-orange-1)"/>
+  <rect width="1920" height="1080" fill="url(#glow-orange-2)"/>
+
+  <!-- Diagonal accent (visible but not loud) -->
+  <line x1="0" y1="1080" x2="1920" y2="0" stroke="#005BAC" stroke-opacity="0.07" stroke-width="1.5"/>
+
+  <!-- Soft arc -->
+  <circle cx="1580" cy="180" r="320" fill="none" stroke="#F58220" stroke-opacity="0.08" stroke-width="1"/>
+
+  <!-- Bottom brand bar (clear anchor) -->
+  <rect x="0" y="1064" width="1920" height="16" fill="url(#bottom-bar)"/>
+
+  <!-- Right edge accent -->
+  <rect x="1904" y="0" width="16" height="1080" fill="url(#right-edge)" opacity="0.45"/>
+</svg>

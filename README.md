@@ -21,6 +21,12 @@
 - [第09回](第09回/) — [ワークショップ] ソリューション構築(3)：仕上げ・テスト・共有
 - [第10回](第10回/) — [発表会] 成果共有とナレッジベース化
 
+## スライド生成（NotebookLM）
+
+- ブランドカラー・背景: `materials/brand-colors.md` と `materials/background.png`
+- 背景 PNG の再生成: `cd materials && npm install && npm run render-png`
+- Cursor Skill: `.cursor/skills/seminar-slide-generator/SKILL.md`（NotebookLM 向けプロンプトの作り方）
+
 ## アンケート
 
 - [事前アンケート（第01回）](アンケート/事前アンケート（第01回）.md) — 研修前のベースライン計測（5分・全15問）
