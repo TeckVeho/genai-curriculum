@@ -16,7 +16,7 @@
     width="728"
     height="90"
     style="border:0;overflow:hidden;display:block;"
-    title="物流事務DX人材育成プログラム"
+    title="物流企業特化AI人材育成プログラム"
     loading="lazy"
   ></iframe>
 
@@ -26,7 +26,7 @@
     width="300"
     height="250"
     style="border:0;overflow:hidden;display:block;"
-    title="物流事務DX人材育成プログラム"
+    title="物流企業特化AI人材育成プログラム"
     loading="lazy"
   ></iframe>
 
@@ -36,7 +36,7 @@
     width="300"
     height="600"
     style="border:0;overflow:hidden;display:block;"
-    title="物流事務DX人材育成プログラム"
+    title="物流企業特化AI人材育成プログラム"
     loading="lazy"
   ></iframe>
 
