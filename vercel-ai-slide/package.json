@@ -1,0 +1,10 @@
+{
+  "name": "ai-intro-slide-vercel",
+  "private": true,
+  "description": "Vercel 用: 提案スライド HTML を単一サイトとして公開",
+  "scripts": {
+    "sync": "node sync-source.cjs",
+    "build": "node copy-slide.cjs",
+    "predeploy": "node sync-source.cjs && node copy-slide.cjs"
+  }
+}

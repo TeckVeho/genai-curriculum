@@ -1,2 +1,4 @@
 .DS_Store
 materials/node_modules/
+vercel-ai-slide/dist/
+vercel-ai-slide/.vercel/

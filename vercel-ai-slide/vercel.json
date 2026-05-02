@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "echo 'no deps — skip'",
+  "buildCommand": "node copy-slide.cjs",
+  "outputDirectory": "dist",
+  "framework": null
+}

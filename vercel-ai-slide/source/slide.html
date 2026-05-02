@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI導入提案資料｜物流企業特化AI人材育成プログラム</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0c0f1a;
+      --navy:   #111827;
+      --slate1: #1e293b;
+      --slate2: #334155;
+      --muted:  #94a3b8;
+      --soft:   #cbd5e1;
+      --white:  #f8fafc;
+      --blue:   #3b82f6;
+      --blue-l: #60a5fa;
+      --indigo: #6366f1;
+      --cyan:   #06b6d4;
+      --green:  #22c55e;
+      --lime:   #84cc16;
+      --amber:  #f59e0b;
+      --orange: #f97316;
+      --red:    #ef4444;
+      --rose:   #fb7185;
+      --r: 0;
+    }
+
+    html { font-size: 16px; }
+    html, body {
+      height: 100%;
+      font-family: "Inter", "Noto Sans JP", sans-serif;
+      background: var(--ink);
+      color: var(--white);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .slides { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      opacity: 0; pointer-events: none;
+      transition: opacity .5s cubic-bezier(.4,0,.2,1), transform .5s cubic-bezier(.4,0,.2,1);
+      transform: translateY(24px) scale(.985);
+      overflow-y: auto;
+    }
+    .slide.active { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
+    .slide.prev   { opacity: 0; transform: translateY(-24px) scale(.985); }
+
+    /* -- progress -- */
+    .progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--cyan), var(--green)); transition: width .4s ease; z-index: 200; }
+
+    /* -- nav -- */
+    .nav {
+      position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(17,24,39,.82); border: 1px solid rgba(255,255,255,.08);
+      padding: 6px 16px; border-radius: 999px; backdrop-filter: blur(20px) saturate(1.4);
+      z-index: 100;
+    }
+    .nav button {
+      background: none; border: 1px solid rgba(255,255,255,.15); color: #fff;
+      width: 32px; height: 32px; border-radius: 50%; font-size: 14px;
+      cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center;
+    }
+    .nav button:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); }
+    .nav button:disabled { opacity: .25; pointer-events: none; }
+    .nav-counter { font-size: 11px; color: var(--muted); min-width: 48px; text-align: center; font-weight: 500; letter-spacing: .3px; }
+
+    /* -- dots -- */
+    .dots { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 100; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.18); cursor: pointer; transition: all .3s; }
+    .dot:hover { background: rgba(255,255,255,.4); }
+    .dot.active { background: var(--blue); transform: scale(1.5); box-shadow: 0 0 8px rgba(59,130,246,.5); }
+
+    /* -- print -- */
+    .print-btn {
+      position: fixed; top: 14px; right: 14px;
+      background: rgba(17,24,39,.7); border: 1px solid rgba(255,255,255,.1);
+      color: var(--muted); padding: 5px 12px; border-radius: 6px; font-size: 11px;
+      cursor: pointer; z-index: 100; backdrop-filter: blur(12px); font-family: inherit;
+      transition: all .2s;
+    }
+    .print-btn:hover { color: #fff; border-color: rgba(255,255,255,.25); }
+
+    @media print {
+      html, body { overflow: visible; background: #fff; height: auto; }
+      .nav, .dots, .print-btn, .progress { display: none !important; }
+      .slides { width: auto; height: auto; }
+      .slide { position: relative !important; opacity: 1 !important; pointer-events: all !important; transform: none !important; page-break-after: always; min-height: 100vh; }
+    }
+
+    /* ========== COMMON ========== */
+    .pad { padding: 0 56px; }
+    .sh { padding: 20px 56px 0; display: flex; justify-content: space-between; align-items: center; }
+    .sh-logo { font-size: 10px; letter-spacing: .8px; color: rgba(255,255,255,.35); font-weight: 500; text-transform: uppercase; }
+    .sh-num { font-size: 10px; color: rgba(255,255,255,.3); font-weight: 500; }
+    .sb { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 56px 54px; }
+
+    .label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase;
+      margin-bottom: 14px; padding: 4px 12px; border-radius: 4px;
+    }
+    .lb { background: rgba(59,130,246,.15); color: var(--blue-l); }
+    .la { background: rgba(245,158,11,.12); color: #fbbf24; }
+    .lr { background: rgba(239,68,68,.12); color: var(--rose); }
+    .lg { background: rgba(34,197,94,.12); color: #4ade80; }
+    .lw { background: rgba(255,255,255,.08); color: rgba(255,255,255,.65); }
+
+    .h1 { font-size: 44px; font-weight: 900; line-height: 1.18; letter-spacing: -.5px; margin-bottom: 14px; }
+    .h2 { font-size: 30px; font-weight: 800; line-height: 1.25; letter-spacing: -.3px; margin-bottom: 8px; }
+    .h3 { font-size: 18px; font-weight: 700; line-height: 1.35; margin-bottom: 6px; }
+    .em { color: var(--amber); }
+    .em-b { color: var(--blue-l); }
+    .em-g { color: #4ade80; }
+    .em-r { color: var(--rose); }
+
+    .lead { font-size: 14px; color: var(--muted); line-height: 1.75; max-width: 680px; margin-bottom: 20px; font-weight: 400; }
+
+    /* -- grid -- */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .g4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+    .g23 { display: grid; grid-template-columns: 2fr 3fr; gap: 18px; }
+    .g32 { display: grid; grid-template-columns: 3fr 2fr; gap: 18px; }
+
+    /* -- card -- */
+    .c {
+      border-radius: 10px; padding: 16px 18px; position: relative;
+      border: 1px solid rgba(255,255,255,.06); background: rgba(255,255,255,.03);
+      transition: background .2s;
+    }
+    .c-glass { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
+    .c-blue  { background: rgba(59,130,246,.08); border-color: rgba(59,130,246,.2); }
+    .c-green { background: rgba(34,197,94,.06); border-color: rgba(34,197,94,.2); }
+    .c-red   { background: rgba(239,68,68,.06); border-color: rgba(239,68,68,.2); }
+    .c-amber { background: rgba(245,158,11,.06); border-color: rgba(245,158,11,.2); }
+    .c-dark  { background: rgba(15,23,42,.6); border-color: rgba(255,255,255,.06); }
+    .c-solid { background: rgba(30,41,59,.8); border-color: rgba(255,255,255,.08); }
+
+    .c-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+    .c-badge { font-size: 9px; font-weight: 700; letter-spacing: .5px; margin-bottom: 6px; padding: 2px 7px; border-radius: 3px; display: inline-block; }
+    .b-r { background: rgba(239,68,68,.2); color: var(--rose); }
+    .b-a { background: rgba(245,158,11,.2); color: #fbbf24; }
+    .b-b { background: rgba(59,130,246,.2); color: var(--blue-l); }
+    .b-g { background: rgba(34,197,94,.2); color: #4ade80; }
+    .c-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 5px; line-height: 1.4; }
+    .c-desc { font-size: 11.5px; color: rgba(255,255,255,.5); line-height: 1.7; }
+    .c-src { font-size: 9.5px; color: rgba(255,255,255,.3); margin-top: 6px; font-style: italic; }
+
+    /* -- stat -- */
+    .stat-num { font-size: 40px; font-weight: 900; line-height: 1; letter-spacing: -1px; }
+    .stat-unit { font-size: 16px; font-weight: 700; margin-left: 2px; }
+    .stat-label { font-size: 10.5px; color: rgba(255,255,255,.45); margin-top: 4px; line-height: 1.5; }
+
+    /* -- table -- */
+    .tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .tbl thead th { background: rgba(59,130,246,.15); color: var(--blue-l); padding: 8px 10px; text-align: left; font-weight: 700; font-size: 10.5px; letter-spacing: .3px; border-bottom: 1px solid rgba(59,130,246,.2); }
+    .tbl tbody td { padding: 9px 10px; border-bottom: 1px solid rgba(255,255,255,.05); color: rgba(255,255,255,.8); vertical-align: top; }
+    .tbl tbody tr:hover td { background: rgba(255,255,255,.02); }
+
+    /* -- check -- */
+    .ck { list-style: none; }
+    .ck li { display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; color: rgba(255,255,255,.8); margin-bottom: 8px; line-height: 1.6; }
+    .ck-i { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; margin-top: 1px; }
+    .ck-ok { background: rgba(34,197,94,.2); color: #4ade80; }
+    .ck-ng { background: rgba(239,68,68,.2); color: var(--rose); }
+
+    /* -- flow -- */
+    .flow { display: flex; gap: 0; align-items: stretch; }
+    .flow-s {
+      flex: 1; text-align: center; padding: 14px 10px; position: relative;
+      background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.18); border-radius: 8px;
+    }
+    .flow-s:not(:last-child)::after { content: "→"; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); color: var(--amber); font-size: 16px; font-weight: 700; z-index: 1; }
+    .flow-s + .flow-s { margin-left: 22px; }
+    .flow-n { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: var(--blue); border-radius: 50%; font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+    .flow-t { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .flow-d { font-size: 10px; color: rgba(255,255,255,.45); line-height: 1.5; }
+
+    /* -- highlight box -- */
+    .hl {
+      border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 14px;
+    }
+    .hl-a { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.25); }
+    .hl-g { background: rgba(34,197,94,.06); border: 1px solid rgba(34,197,94,.2); }
+    .hl-b { background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.2); }
+    .hl-icon { font-size: 24px; flex-shrink: 0; }
+    .hl-text { font-size: 12.5px; color: rgba(255,255,255,.8); line-height: 1.65; }
+
+    /* -- vs -- */
+    .vs-g { display: grid; grid-template-columns: 1fr 44px 1fr; align-items: start; gap: 0; }
+    .vs-m { display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: var(--slate2); align-self: center; }
+
+    /* -- source -- */
+    .src { font-size: 9px; color: rgba(255,255,255,.25); margin-top: 10px; line-height: 1.6; }
+
+    /* ========== SLIDE BACKGROUNDS ========== */
+    .bg-ink   { background: var(--ink); }
+    .bg-navy  { background: linear-gradient(160deg, #070b14 0%, #0f172a 40%, #131d33 100%); }
+    .bg-deep  { background: linear-gradient(160deg, #050810 0%, #0c1220 50%, #111827 100%); }
+    .bg-warm  { background: linear-gradient(160deg, #120a05 0%, #1a1008 50%, #1f160a 100%); }
+    .bg-cool  { background: linear-gradient(160deg, #030d14 0%, #06192a 50%, #0a2140 100%); }
+    .bg-dred  { background: linear-gradient(160deg, #110808 0%, #1a0d0d 50%, #201010 100%); }
+    .bg-dgrn  { background: linear-gradient(160deg, #040e08 0%, #081a10 50%, #0a2015 100%); }
+
+    /* -- decoration -- */
+    .deco { position: absolute; pointer-events: none; border-radius: 50%; }
+    .glow-b { background: radial-gradient(circle, rgba(59,130,246,.08), transparent 70%); }
+    .glow-a { background: radial-gradient(circle, rgba(245,158,11,.06), transparent 70%); }
+    .glow-g { background: radial-gradient(circle, rgba(34,197,94,.06), transparent 70%); }
+
+    /* grain overlay */
+    .slide::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    }
+    .slide > * { position: relative; z-index: 1; }
+
+    /* -- cover unique -- */
+    .cover-wrap { flex:1; display:flex; flex-direction:column; justify-content:center; padding: 0 60px 70px; }
+    .cover-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10.5px; font-weight: 600; letter-spacing: .8px;
+      color: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 5px 14px; border-radius: 999px;
+      margin-bottom: 20px; width: fit-content;
+      backdrop-filter: blur(4px);
+    }
+    .cover-h { font-size: 50px; font-weight: 900; line-height: 1.15; letter-spacing: -1px; margin-bottom: 10px; }
+    .cover-sub { font-size: 16px; color: rgba(255,255,255,.5); line-height: 1.65; margin-bottom: 28px; font-weight: 400; }
+    .cover-meta { display: flex; gap: 28px; flex-wrap: wrap; }
+    .cm-item { font-size: 11px; }
+    .cm-item strong { display: block; color: rgba(255,255,255,.7); font-size: 12px; font-weight: 600; margin-bottom: 1px; }
+    .cm-item span { color: rgba(255,255,255,.35); }
+    .cover-deco1 { position:absolute; right:-5%; top:-10%; width:55%; height:120%; background: linear-gradient(135deg, rgba(59,130,246,.04), rgba(6,182,212,.02)); clip-path: polygon(25% 0, 100% 0, 100% 100%, 5% 100%); pointer-events:none; }
+
+    /* -- cta slide -- */
+    .cta-center { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 0 56px 60px; }
+  </style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<button class="print-btn" onclick="window.print()">PDF保存</button>
+
+<div class="slides" id="slides">
+
+<!-- =============== SLIDE 1: COVER =============== -->
+<div class="slide bg-cool active" id="s1">
+  <div class="cover-deco1"></div>
+  <div class="deco glow-b" style="width:500px;height:500px;right:-100px;bottom:-100px;"></div>
+  <div class="deco glow-a" style="width:300px;height:300px;right:15%;top:8%;"></div>
+
+  <div class="cover-wrap">
+    <div class="cover-chip">AI導入提案資料 — 株式会社 DX研究所</div>
+    <div class="cover-h">
+      生成AIで<span class="em">業務を変える</span><br>ために、何が足りないのか
+    </div>
+    <div class="cover-sub">
+      AI導入の現在地と課題、そしてこのセミナーが提供する解決策<br>
+      — エビデンスに基づく提案 —
+    </div>
+    <div class="cover-meta">
+      <div class="cm-item"><strong>物流企業特化 AI人材育成プログラム</strong><span>AI活用・業務変革コース（全10回・10時間）</span></div>
+      <div class="cm-item"><strong>提供</strong><span>株式会社 DX研究所</span></div>
+      <div class="cm-item"><strong>発行</strong><span>2026年5月</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 2: 市場データ =============== -->
+<div class="slide bg-deep" id="s2">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">02 / 10</div></div>
+  <div class="sb">
+    <div class="label lb">MARKET DATA</div>
+    <div class="h2">生成AIは<span class="em">「導入するかどうか」</span>の議論を終えた</div>
+    <div class="lead">2026年4月、東京商工リサーチが6,327社を対象に実施した調査が、日本企業のAI活用の現在地を示している。</div>
+
+    <div class="g4" style="margin-bottom:16px;">
+      <div class="c c-blue" style="text-align:center; padding:16px 12px;">
+        <div class="stat-num" style="color:var(--blue-l);">59.1<span class="stat-unit">%</span></div>
+        <div class="stat-label">大企業の組織的AI推進率<br>（前年比+15.8pt）</div>
+      </div>
+      <div class="c c-amber" style="text-align:center; padding:16px 12px;">
+        <div class="stat-num" style="color:#fbbf24;">32.3<span class="stat-unit">%</span></div>
+        <div class="stat-label">中小企業の組織的AI推進率<br>（大企業との差 約27pt）</div>
+      </div>
+      <div class="c c-glass" style="text-align:center; padding:16px 12px;">
+        <div class="stat-num" style="color:var(--rose);">62<span class="stat-unit">%</span></div>
+        <div class="stat-label">生成AIを活用できていない<br>中小企業の割合</div>
+      </div>
+      <div class="c c-glass" style="text-align:center; padding:16px 12px;">
+        <div class="stat-num" style="color:var(--cyan);">53.4<span class="stat-unit">%</span></div>
+        <div class="stat-label">AI推進企業が人員構成<br>の見直しを想定</div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:12px;">
+      <div class="c c-dark" style="padding:14px 16px;">
+        <div class="c-title" style="color:var(--amber); font-size:12px; margin-bottom:6px;">📊 Gartner 予測（2025年8月発表）</div>
+        <div class="c-desc" style="font-size:12px; color:rgba(255,255,255,.75); line-height:1.7;">
+          企業アプリケーションのうち<strong style="color:#fff;">AIエージェントを搭載する割合が40%に達する</strong>見込み（2026年末）。2025年は5%未満だったため、<strong style="color:var(--amber);">わずか1年で8倍</strong>。企業ソフトウェア史上最速の採用曲線。
+        </div>
+      </div>
+      <div class="c c-dark" style="padding:14px 16px;">
+        <div class="c-title" style="color:var(--cyan); font-size:12px; margin-bottom:6px;">📰 パーソル総合研究所（2025年10月調査）</div>
+        <div class="c-desc" style="font-size:12px; color:rgba(255,255,255,.75); line-height:1.7;">
+          生成AI活用で業務時間は作業単位で<strong style="color:#fff;">平均17%削減</strong>。ただし、<strong style="color:var(--rose);">実際に削減できている人は利用者の4人に1人</strong>にとどまり、組織全体への波及には課題が残る。
+        </div>
+      </div>
+    </div>
+
+    <div class="src">出典：東京商工リサーチ「生成AI活用調査」（2026/4、6,327社）／大同生命「中小企業調査」（2026/2）／Gartner Newsroom（2025/8）／パーソル総合研究所（2025/10）</div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 3: AI導入の定義 =============== -->
+<div class="slide bg-navy" id="s3">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">03 / 10</div></div>
+  <div class="sb">
+    <div class="label lb">DEFINITION</div>
+    <div class="h2">「AI導入」の<span class="em">正しい定義</span>とは何か？</div>
+    <div class="lead">多くの企業が「ツールを契約した＝導入完了」と捉えている。しかし調査データは、それだけでは成果が出ないことを明確に示している。</div>
+
+    <div class="vs-g" style="margin-bottom:16px;">
+      <div class="c c-red" style="padding:16px 18px;">
+        <div style="font-size:11px; font-weight:700; color:var(--rose); letter-spacing:.5px; margin-bottom:8px;">❌ 誤解されている「導入」</div>
+        <div class="c-title" style="margin-bottom:8px;">ツール契約 ＝ 導入完了</div>
+        <ul class="ck">
+          <li><span class="ck-i ck-ng">✕</span>アカウントを全社員に配布したが使われない</li>
+          <li><span class="ck-i ck-ng">✕</span>研修を1回やったが現場で応用できない</li>
+          <li><span class="ck-i ck-ng">✕</span>効果を測定する仕組みがない</li>
+        </ul>
+        <div class="c-src">コーレ社調査：管理職の7割超が「使いこなせない層による業務支障」を実感</div>
+      </div>
+      <div class="vs-m">VS</div>
+      <div class="c c-green" style="padding:16px 18px;">
+        <div style="font-size:11px; font-weight:700; color:#4ade80; letter-spacing:.5px; margin-bottom:8px;">✅ 本来の「導入」</div>
+        <div class="c-title" style="margin-bottom:8px;">業務課題をAIで自分で解決できる状態</div>
+        <ul class="ck">
+          <li><span class="ck-i ck-ok">✓</span>自分の業務課題を特定し、AI化候補を選べる</li>
+          <li><span class="ck-i ck-ok">✓</span>最適なAIソリューションを自分で構築できる</li>
+          <li><span class="ck-i ck-ok">✓</span>組織にナレッジとして蓄積・横展開される</li>
+        </ul>
+        <div class="c-src">IT教育実施企業の86%がAI導入効果を実感（ひとり情シス協会調査）</div>
+      </div>
+    </div>
+
+    <div class="hl hl-a">
+      <div class="hl-icon">💡</div>
+      <div class="hl-text">
+        <strong style="color:#fbbf24;">AI導入の本質は「人材の能力変化 × 業務プロセスの変革」。</strong>
+        ツール導入だけでなく、社員が業務にAIを組み込めるスキルを持ち、成果が組織に蓄積される——この2つが揃って初めて「導入完了」と言える。
+      </div>
+    </div>
+
+    <div class="src">出典：コーレ社「2026年企業の生成AI利用実態」（管理職1,008名）／ひとり情シス協会「中小企業AI活用調査2025」（463名）</div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 4: 課題のエビデンス =============== -->
+<div class="slide bg-dred" id="s4">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">04 / 10</div></div>
+  <div class="sb">
+    <div class="label lr">EVIDENCE</div>
+    <div class="h2">なぜ定着しないのか？<span class="em">データが語る5つの障壁</span></div>
+    <div class="lead">複数の調査データを横断すると、中小企業のAI活用が止まる原因は5つの障壁に集約される。</div>
+
+    <table class="tbl" style="margin-bottom:14px;">
+      <thead>
+        <tr>
+          <th style="width:5%">#</th>
+          <th style="width:24%">障壁</th>
+          <th style="width:44%">調査データ</th>
+          <th style="width:27%">出典</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--rose); font-weight:700;">1</td>
+          <td style="font-weight:600; color:#fff;">推進人材の不足</td>
+          <td>AI導入の目的は「人手不足解消」が<strong style="color:#fff;">71%</strong>。しかし導入障壁も「推進・運用する人材の不足」が<strong style="color:var(--rose);">61%</strong>で上位。解決策自体を推進する人がいないジレンマ。</td>
+          <td style="color:var(--muted); font-size:10px;">ひとり情シス協会（463名・2025年）</td>
+        </tr>
+        <tr>
+          <td style="color:var(--rose); font-weight:700;">2</td>
+          <td style="font-weight:600; color:#fff;">活用アイデアの欠如</td>
+          <td>「どの業務に活用できるか分からない」<strong style="color:#fff;">24%</strong>、「ノウハウがない」<strong style="color:#fff;">40%</strong>。未導入企業は用途が見えていない。</td>
+          <td style="color:var(--muted); font-size:10px;">大同生命調査（2026年2月）</td>
+        </tr>
+        <tr>
+          <td style="color:var(--rose); font-weight:700;">3</td>
+          <td style="font-weight:600; color:#fff;">管理職層の習熟遅れ</td>
+          <td>AIを使いこなせない層の最多は<strong style="color:var(--rose);">「課長・リーダー職」</strong>。現場よりも管理職の習熟遅れが顕著。</td>
+          <td style="color:var(--muted); font-size:10px;">コーレ社（管理職1,008名・2026年1月）</td>
+        </tr>
+        <tr>
+          <td style="color:var(--rose); font-weight:700;">4</td>
+          <td style="font-weight:600; color:#fff;">教育不足による効果差</td>
+          <td>IT教育を実施した企業の<strong style="color:#4ade80;">86%</strong>がAI効果を実感。未実施企業は<strong style="color:var(--rose);">29%</strong>のみ。約<strong style="color:#fff;">3倍の差。</strong></td>
+          <td style="color:var(--muted); font-size:10px;">ひとり情シス協会（2025年）</td>
+        </tr>
+        <tr>
+          <td style="color:var(--rose); font-weight:700;">5</td>
+          <td style="font-weight:600; color:#fff;">ナレッジが個人に閉じる</td>
+          <td>「定着しない要因」として「活用アイデアが出ない」<strong style="color:#fff;">26%</strong>、「部門間連携の不足」<strong style="color:#fff;">22%</strong>。組織的な環境整備が不可欠。</td>
+          <td style="color:var(--muted); font-size:10px;">コーレ社（2026年1月）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="hl hl-a">
+      <div class="hl-icon">⚠️</div>
+      <div class="hl-text">
+        <strong style="color:#fbbf24;">共通する結論：</strong>
+        ツールを入れただけでは定着しない。<strong style="color:#fff;">「業務に紐づいた実践的な教育」と「組織的なナレッジ共有」</strong>が揃わなければ、投資は回収できない。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 5: 物流業界の課題 =============== -->
+<div class="slide bg-warm" id="s5">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">05 / 10</div></div>
+  <div class="sb">
+    <div class="label la">LOGISTICS CRISIS</div>
+    <div class="h2">物流業界は<span class="em">「三重苦」</span>の真っ只中にいる</div>
+    <div class="lead">2024年問題に端を発する構造変化は、2026年の法改正でさらに加速する。物流業界こそ、AI活用が最も急がれる業種の一つ。</div>
+
+    <div class="g3" style="margin-bottom:14px;">
+      <div class="c c-red" style="text-align:center; padding:16px 14px;">
+        <div class="stat-num" style="color:var(--rose);">14<span class="stat-unit">%</span></div>
+        <div class="stat-label" style="margin-bottom:6px;">2024年時点の輸送力不足<br>（国交省試算）</div>
+        <div style="font-size:26px; font-weight:900; color:var(--rose); margin:2px 0;">→ 34<span style="font-size:14px;">%</span></div>
+        <div class="stat-label">2030年の予測輸送力不足</div>
+      </div>
+      <div class="c c-amber" style="text-align:center; padding:16px 14px;">
+        <div class="stat-num" style="color:#fbbf24;">49.7<span class="stat-unit">歳</span></div>
+        <div class="stat-label" style="margin-bottom:6px;">男性トラックドライバーの<br>平均年齢</div>
+        <div style="font-size:11px; color:rgba(255,255,255,.45); line-height:1.6; margin-top:6px;">若手入職が続かず<br>今後10年で大量退職の見込み</div>
+      </div>
+      <div class="c c-blue" style="text-align:center; padding:16px 14px;">
+        <div class="stat-num" style="color:var(--blue-l);">95<span class="stat-unit">%超</span></div>
+        <div class="stat-label" style="margin-bottom:6px;">AI導入に前向きな<br>物流企業の割合</div>
+        <div style="font-size:11px; color:rgba(255,255,255,.45); line-height:1.6; margin-top:6px;">しかし実務活用は<strong style="color:rgba(255,255,255,.7);">36.6%</strong><br>「やりたいが方法が分からない」</div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:12px;">
+      <div class="c c-glass" style="padding:14px 16px;">
+        <div style="font-size:11px; font-weight:700; color:#fbbf24; margin-bottom:6px;">🚛 現場のアナログ業務が残り続ける</div>
+        <div class="c-desc" style="font-size:12px; color:rgba(255,255,255,.7); line-height:1.7;">
+          点呼・日報・勤怠・伝票・荷主報告・クレーム対応・Gマーク更新・社内教育資料——<strong style="color:#fff;">「システムの外側に残った人手仕事」が大量に</strong>ある。電話・FAX・紙伝票が依然主流で、デジタル化が十分に進んでいない。
+        </div>
+        <div class="c-src">出典：国交省 中小物流事業者DX推進手引き・WithProjects調査（2026年3月）</div>
+      </div>
+      <div class="c c-glass" style="padding:14px 16px;">
+        <div style="font-size:11px; font-weight:700; color:var(--cyan); margin-bottom:6px;">📋 2026年からの法的義務化</div>
+        <div class="c-desc" style="font-size:12px; color:rgba(255,255,255,.7); line-height:1.7;">
+          2025年：物流効率化の<strong style="color:#fff;">努力義務</strong>開始<br>
+          2026年：大規模荷主に<strong style="color:#fff;">CLO（物流統括管理者）選任・中長期計画提出が義務化</strong><br>
+          制度対応とDXを同時に進めなければ、「義務対応コスト」だけが増える。
+        </div>
+        <div class="c-src">出典：物流革新に向けた政策パッケージ／流通業務総合効率化法・貨物自動車運送事業法改正</div>
+      </div>
+    </div>
+
+    <div class="hl hl-a">
+      <div class="hl-icon">🎯</div>
+      <div class="hl-text">
+        <strong style="color:#fbbf24;">大同生命調査（2026年）で「運輸業」は他業種と比較してAI活用度が低い</strong>ことが判明。人手不足が最も深刻な業界が、AIの恩恵を最も受けられていない逆説的状況にある。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 6: 効果のエビデンス =============== -->
+<div class="slide bg-dgrn" id="s6">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">06 / 10</div></div>
+  <div class="sb">
+    <div class="label lg">PROVEN IMPACT</div>
+    <div class="h2">ただし、<span class="em-g">正しく導入すれば効果は実証済み</span></div>
+    <div class="lead">問題は「AIに効果がないこと」ではない。「正しいやり方で導入できていないこと」が問題だ。効果は大規模実証で証明されている。</div>
+
+    <div class="g3" style="margin-bottom:14px;">
+      <div class="c c-green" style="text-align:center; padding:18px 14px;">
+        <div class="stat-num" style="color:#4ade80;">26<span class="stat-unit">%</span></div>
+        <div class="stat-label">タスク完了数の向上<br>（Microsoft・Accenture・5,000人RCT）</div>
+        <div class="c-src" style="margin-top:8px;">Cui et al., 2025</div>
+      </div>
+      <div class="c c-green" style="text-align:center; padding:18px 14px;">
+        <div class="stat-num" style="color:#4ade80;">17<span class="stat-unit">%</span></div>
+        <div class="stat-label">日本企業の業務時間削減<br>（作業単位での平均値）</div>
+        <div class="c-src" style="margin-top:8px;">パーソル総合研究所 2025年10月</div>
+      </div>
+      <div class="c c-green" style="text-align:center; padding:18px 14px;">
+        <div class="stat-num" style="color:#4ade80;">3<span class="stat-unit">倍</span></div>
+        <div class="stat-label">AI教育を行った企業と<br>行わなかった企業の効果差</div>
+        <div class="c-src" style="margin-top:8px;">ひとり情シス協会 2025年</div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:12px;">
+      <div class="c c-dark" style="padding:14px 16px;">
+        <div style="font-size:11px; font-weight:700; color:#4ade80; margin-bottom:8px;">🔬 Microsoft 大規模実証のポイント</div>
+        <ul class="ck">
+          <li><span class="ck-i ck-ok">✓</span><strong style="color:#fff;">若手社員の生産性が27〜39%向上</strong>——組織内スキル格差を縮小</li>
+          <li><span class="ck-i ck-ok">✓</span>AIが書いたコードの承認率は<strong style="color:#fff;">約10%上昇</strong>——品質も向上</li>
+          <li><span class="ck-i ck-ok">✓</span>ただし<strong style="color:var(--rose);">30〜40%がアクセス権があっても一度も使わなかった</strong></li>
+        </ul>
+        <div class="c-desc" style="margin-top:6px; font-size:11.5px;">→ ツールを渡すだけでは使われない。<strong style="color:#fff;">教育と業務への紐づけが不可欠</strong>。</div>
+      </div>
+      <div class="c c-dark" style="padding:14px 16px;">
+        <div style="font-size:11px; font-weight:700; color:#fbbf24; margin-bottom:8px;">🚛 物流業界の先行事例</div>
+        <ul class="ck">
+          <li><span class="ck-i ck-ok">✓</span>ヤマト運輸：配送生産性<strong style="color:#fff;">最大20%向上</strong>・走行距離25%削減</li>
+          <li><span class="ck-i ck-ok">✓</span>佐川急便：手書き伝票AI読取で<strong style="color:#fff;">月間8,400時間削減</strong></li>
+          <li><span class="ck-i ck-ok">✓</span>提案書作成時間：<strong style="color:#fff;">45分→15分（66%短縮）</strong>の事例も</li>
+        </ul>
+        <div class="c-desc" style="margin-top:6px; font-size:11.5px;">→ 大手だけの話ではない。<strong style="color:#fff;">定型業務こそ中小企業がAIで即効果を出せる領域</strong>。</div>
+      </div>
+    </div>
+
+    <div class="hl hl-g">
+      <div class="hl-icon">📌</div>
+      <div class="hl-text">
+        <strong style="color:#4ade80;">結論：AIの効果は実証済み。</strong>足りないのは「ツール」ではなく<strong style="color:#fff;">「自分の業務に当てはめて使いこなす教育」</strong>。ここを解決するのが、このセミナーの存在意義。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 7: 解決策 =============== -->
+<div class="slide bg-cool" id="s7">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">07 / 10</div></div>
+  <div class="sb">
+    <div class="label lg">SOLUTION MAP</div>
+    <div class="h2">このセミナーが<span class="em-g">5つの障壁を解決できる</span>理由</div>
+    <div class="lead">すべてのカリキュラムが「調査で判明した障壁」への対策として設計されている。</div>
+
+    <table class="tbl" style="margin-bottom:14px;">
+      <thead>
+        <tr>
+          <th style="width:20%">障壁</th>
+          <th style="width:45%">このセミナーの解決策</th>
+          <th style="width:20%">該当回</th>
+          <th style="width:15%">根拠</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:600;">🧑‍💻 推進人材の不足</td>
+          <td>IT初心者対応。全職種の社員が<strong style="color:#fff;">自分でAIソリューションを構築</strong>できるようになり、専門人材に依存しない体制を作る。</td>
+          <td><span class="c-badge b-b">全10回</span></td>
+          <td style="font-size:10px; color:var(--muted);">障壁61%を解消</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">🗺️ 活用アイデアの欠如</td>
+          <td><strong style="color:#4ade80;">第1回で自分の業務棚卸し</strong>を実施。「何に使えるか分からない」を全カリキュラムの出発点で解消。</td>
+          <td><span class="c-badge b-g">第1回</span></td>
+          <td style="font-size:10px; color:var(--muted);">障壁40%を解消</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">👔 管理職の習熟遅れ</td>
+          <td>全職種・全階層対応設計。1つのプラットフォーム（AIエージェント）に集中するため、<strong style="color:#fff;">複数ツール習得が不要</strong>で学習コストが低い。</td>
+          <td><span class="c-badge b-b">第2〜5回</span></td>
+          <td style="font-size:10px; color:var(--muted);">コーレ社知見</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">📚 教育不足の効果差</td>
+          <td>ワークショップ4回で<strong style="color:#4ade80;">実際に動くソリューションを構築</strong>。プロトタイプ→改善→テストの実践サイクルを回す。</td>
+          <td><span class="c-badge b-a">第6〜9回</span></td>
+          <td style="font-size:10px; color:var(--muted);">教育で3倍差</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">🔄 ナレッジが個人に閉じる</td>
+          <td>最終回の<strong style="color:#4ade80;">成果発表会でナレッジベース化</strong>。参加者全員の取り組みが組織資産として蓄積される。</td>
+          <td><span class="c-badge b-b">第10回</span></td>
+          <td style="font-size:10px; color:var(--muted);">横展開戦略</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="hl hl-g">
+      <div class="hl-icon">🎯</div>
+      <div class="hl-text">
+        <strong style="color:#4ade80;">教材は共通、アウトプットは完全個別化。</strong>受講者が自分の業務課題を持ち込み、研修内でAIエージェントを使ったソリューションを構築。研修が終わった瞬間から即現場で使える状態を目指す。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 8: ビフォーアフター =============== -->
+<div class="slide bg-navy" id="s8">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">08 / 10</div></div>
+  <div class="sb">
+    <div class="label lb">BEFORE → AFTER</div>
+    <div class="h2">受講前後の<span class="em">業務変化</span></div>
+    <div class="lead">10回・10時間の研修で、現場のAI活用レベルはこう変わる。</div>
+
+    <div class="g2" style="margin-bottom:16px;">
+      <div>
+        <div style="font-size:11px; font-weight:700; color:var(--rose); letter-spacing:1px; margin-bottom:10px;">BEFORE（受講前）</div>
+        <ul class="ck">
+          <li><span class="ck-i ck-ng">✕</span>AIを使ってみたいが何から始めればいいか分からない（中小企業の<strong>40%</strong>がノウハウ不足）</li>
+          <li><span class="ck-i ck-ng">✕</span>自分の業務のどこにAIが使えるか具体的にイメージできない（<strong>24%</strong>が用途不明）</li>
+          <li><span class="ck-i ck-ng">✕</span>ツールを触ってみたが業務に応用する方法が分からない（利用者の<strong>75%</strong>が効果を出せず）</li>
+          <li><span class="ck-i ck-ng">✕</span>組織にAI活用のナレッジが蓄積されない</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px; font-weight:700; color:#4ade80; letter-spacing:1px; margin-bottom:10px;">AFTER（受講後）</div>
+        <ul class="ck">
+          <li><span class="ck-i ck-ok">✓</span>自分の業務を棚卸しし、AI化すべき課題を特定できる</li>
+          <li><span class="ck-i ck-ok">✓</span>AIエージェントで業務ワークフローを自動化・アプリを構築できる</li>
+          <li><span class="ck-i ck-ok">✓</span>研修内で作った自社専用ソリューションが即日業務に使える</li>
+          <li><span class="ck-i ck-ok">✓</span>成果発表とナレッジベース化で組織全体の生産性が向上する</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="g3" style="margin-bottom:12px;">
+      <div class="c c-blue" style="text-align:center; padding:16px 12px;">
+        <div style="font-size:24px; margin-bottom:6px;">⏱️</div>
+        <div style="font-size:14px; font-weight:700; color:var(--blue-l); margin-bottom:4px;">業務時間の削減</div>
+        <div class="c-desc">定型業務・文書作成・情報整理の工数短縮<br>（実証：平均<strong style="color:#fff;">17%削減</strong>）</div>
+      </div>
+      <div class="c c-blue" style="text-align:center; padding:16px 12px;">
+        <div style="font-size:24px; margin-bottom:6px;">📈</div>
+        <div style="font-size:14px; font-weight:700; color:var(--blue-l); margin-bottom:4px;">生産性の向上</div>
+        <div class="c-desc">特に若手社員の生産性が飛躍的に向上<br>（実証：<strong style="color:#fff;">27〜39%向上</strong>）</div>
+      </div>
+      <div class="c c-blue" style="text-align:center; padding:16px 12px;">
+        <div style="font-size:24px; margin-bottom:6px;">🏢</div>
+        <div style="font-size:14px; font-weight:700; color:var(--blue-l); margin-bottom:4px;">組織力の強化</div>
+        <div class="c-desc">AI教育を実施した企業の<strong style="color:#fff;">86%</strong>が<br>導入効果を実感</div>
+      </div>
+    </div>
+
+    <div class="src">数値根拠：パーソル総合研究所（2025年10月）／Microsoft・Accenture RCT（Cui et al., 2025、5,000名）／ひとり情シス協会（2025年、463名）</div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 9: プログラム概要 =============== -->
+<div class="slide bg-deep" id="s9">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">09 / 10</div></div>
+  <div class="sb">
+    <div class="label lb">PROGRAM & ROI</div>
+    <div class="h2">プログラム概要と<span class="em">投資対効果</span></div>
+
+    <div class="g2" style="margin-bottom:14px; align-items:start;">
+      <div>
+        <div style="font-size:11px; font-weight:700; color:var(--muted); margin-bottom:8px; letter-spacing:.5px;">PROGRAM</div>
+        <table class="tbl">
+          <tbody>
+            <tr><td style="color:var(--muted); width:28%;">対象</td><td>物流・運送・倉庫業（全職種・IT初心者OK）</td></tr>
+            <tr><td style="color:var(--muted);">形式</td><td>全10回 × 各60分 ＝ <strong style="color:#fff;">10時間</strong>・オンライン</td></tr>
+            <tr><td style="color:var(--muted);">構成</td><td>業務棚卸し → AI基礎 → AIエージェント活用 → WS実践 → 成果発表</td></tr>
+            <tr><td style="color:var(--muted);">環境</td><td>PC・ブラウザ・AIアカウント（無料可）</td></tr>
+            <tr><td style="color:var(--muted);">受講料</td><td><strong style="color:#fff; font-size:15px;">400,000円</strong><span style="font-size:10px; color:var(--muted);">（税別）/ 1名</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div style="font-size:11px; font-weight:700; color:var(--muted); margin-bottom:8px; letter-spacing:.5px;">SUBSIDY — 助成金活用</div>
+        <div class="c c-green" style="padding:12px 16px; margin-bottom:10px;">
+          <div style="font-size:10px; color:#4ade80; font-weight:700; margin-bottom:6px;">人材開発支援助成金（事業展開等リスキリング支援コース）</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div style="text-align:center;">
+              <div style="font-size:10px; color:rgba(255,255,255,.45);">中小企業 経費助成率</div>
+              <div style="font-size:28px; font-weight:900; color:#4ade80;">75%</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:10px; color:rgba(255,255,255,.45);">賃金助成（1人/1時間）</div>
+              <div style="font-size:28px; font-weight:900; color:#4ade80;">1,000円</div>
+            </div>
+          </div>
+        </div>
+        <div class="c c-amber" style="padding:12px 16px; text-align:center;">
+          <div style="font-size:10px; color:rgba(255,255,255,.45);">5名受講時の実質負担試算</div>
+          <div style="font-size:32px; font-weight:900; color:#fbbf24; margin:2px 0;">約 450,000<span style="font-size:14px;">円</span></div>
+          <div style="font-size:10px; color:rgba(255,255,255,.4);">200万円 → 助成金155万円適用後（審査結果により変動）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-s">
+        <div class="flow-n">1</div>
+        <div class="flow-t">業務棚卸し</div>
+        <div class="flow-d">第1回 / AI化候補の特定</div>
+      </div>
+      <div class="flow-s">
+        <div class="flow-n">2</div>
+        <div class="flow-t">AI基礎・ツール</div>
+        <div class="flow-d">第2〜5回 / AIエージェント活用</div>
+      </div>
+      <div class="flow-s">
+        <div class="flow-n">3</div>
+        <div class="flow-t">実践ワークショップ</div>
+        <div class="flow-d">第6〜9回 / 自社ソリューション構築</div>
+      </div>
+      <div class="flow-s">
+        <div class="flow-n">4</div>
+        <div class="flow-t">成果発表・共有</div>
+        <div class="flow-d">第10回 / ナレッジ組織化</div>
+      </div>
+    </div>
+
+    <div class="src" style="margin-top:10px;">※ 助成金の支給は審査結果によります。支給を保証するものではありません。詳細は管轄の都道府県労働局にお問い合わせください。</div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 10: CTA =============== -->
+<div class="slide bg-cool" id="s10">
+  <div class="deco glow-b" style="width:600px;height:600px;left:50%;top:50%;transform:translate(-50%,-50%);"></div>
+
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">10 / 10</div></div>
+  <div class="cta-center">
+    <div class="label lw" style="margin-bottom:16px;">NEXT STEP</div>
+    <div style="font-size:38px; font-weight:900; line-height:1.2; letter-spacing:-.5px; margin-bottom:12px;">
+      AIを<span class="em">「使える人材」</span>に変える<br>第一歩を、ご一緒に
+    </div>
+    <div style="font-size:14px; color:var(--muted); margin-bottom:32px; line-height:1.7;">
+      助成金を活用すれば、実質負担を大幅に抑えながら<br>社員のAIスキルを組織に定着させることができます。
+    </div>
+
+    <div class="g3" style="max-width:600px; margin-bottom:24px; width:100%;">
+      <div class="c c-glass" style="text-align:center; padding:18px 12px;">
+        <div style="font-size:24px; margin-bottom:6px;">📞</div>
+        <div style="font-size:11px; font-weight:600; color:var(--muted); margin-bottom:4px;">お電話</div>
+        <div style="font-size:14px; color:var(--blue-l); font-weight:700;">03-5217-8988</div>
+      </div>
+      <div class="c c-glass" style="text-align:center; padding:18px 12px;">
+        <div style="font-size:24px; margin-bottom:6px;">✉️</div>
+        <div style="font-size:11px; font-weight:600; color:var(--muted); margin-bottom:4px;">メール</div>
+        <div style="font-size:13px; color:var(--blue-l); font-weight:700;">hikota@d-dxlab.com</div>
+      </div>
+      <div class="c c-glass" style="text-align:center; padding:18px 12px;">
+        <div style="font-size:24px; margin-bottom:6px;">🌐</div>
+        <div style="font-size:11px; font-weight:600; color:var(--muted); margin-bottom:4px;">Web</div>
+        <div style="font-size:12px; color:var(--blue-l); font-weight:700;">genai-seminar.d-dxlab.com</div>
+      </div>
+    </div>
+
+    <div class="c c-glass" style="max-width:520px; padding:14px 20px; text-align:center;">
+      <div style="font-size:10px; color:var(--muted); font-weight:600; margin-bottom:4px;">担当者</div>
+      <div style="font-size:15px; font-weight:800; color:#fff; margin-bottom:2px;">株式会社 DX研究所　彦田</div>
+      <div style="font-size:11px; color:rgba(255,255,255,.4);">〒102-0093 東京都千代田区平河町１－７－３ 第四大盛丸平河町ビル３階</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <button id="prevBtn" onclick="go(-1)" disabled>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="nav-counter" id="counter">1 / 10</div>
+  <button id="nextBtn" onclick="go(1)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</nav>
+<div class="dots" id="dots"></div>
+
+<script>
+const T=10;let c=0;
+const ss=document.querySelectorAll('.slide'),pb=document.getElementById('prevBtn'),nb=document.getElementById('nextBtn'),ct=document.getElementById('counter'),pr=document.getElementById('progress'),dt=document.getElementById('dots');
+for(let i=0;i<T;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>jump(i);dt.appendChild(d);}
+function upd(){ss.forEach((s,i)=>{s.classList.remove('active','prev');if(i===c)s.classList.add('active');else if(i<c)s.classList.add('prev');});document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===c));ct.textContent=(c+1)+' / '+T;pb.disabled=c===0;nb.disabled=c===T-1;pr.style.width=((c+1)/T*100)+'%';}
+function go(d){const n=c+d;if(n>=0&&n<T){c=n;upd();}}
+function jump(i){c=i;upd();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;});document.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)go(d<0?1:-1);});
+upd();
+</script>
+</body>
+</html>
