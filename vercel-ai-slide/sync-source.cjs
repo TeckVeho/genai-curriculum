@@ -10,9 +10,8 @@ const path = require("path");
 const canonical = path.join(
   path.join(__dirname, ".."),
   "03_申請関連資料",
-  "02_添付資料",
-  "gpt",
-  "04_AI導入提案スライド.html"
+  "03_参考資料",
+  "AI導入提案スライド.html"
 );
 const bundled = path.join(__dirname, "source", "slide.html");
 

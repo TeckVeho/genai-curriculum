@@ -599,9 +599,137 @@
   </div>
 </div>
 
-<!-- =============== SLIDE 8: ビフォーアフター =============== -->
+<!-- =============== SLIDE 8: 業務棚卸し → 自動化 =============== -->
 <div class="slide bg-navy" id="s8">
-  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">08 / 10</div></div>
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">08 / 11</div></div>
+  <div class="sb" style="padding-bottom:44px;">
+    <div class="label lb">WORKFLOW AUDIT → AUTOMATION</div>
+    <div class="h2">セミナーを通してやりたいこと：<span class="em">棚卸し → 自動化候補の特定 → 実装</span></div>
+    <div class="lead" style="margin-bottom:12px;">受講者が「ワークフロー棚卸しシート」に自分の業務を書き出し、3条件で自動化候補を絞り込む。第6回ではトップ3の中から1つを選んでAIで実際に自動化する。</div>
+
+    <!-- Flow -->
+    <div class="flow" style="margin-bottom:14px;">
+      <div class="flow-s" style="background:rgba(59,130,246,.1); border-color:rgba(59,130,246,.25);">
+        <div class="flow-n" style="background:var(--blue);">1</div>
+        <div class="flow-t">ワークフローを書き出す</div>
+        <div class="flow-d">繰り返している業務を全部リストアップ（良し悪し不問）</div>
+      </div>
+      <div class="flow-s" style="background:rgba(245,158,11,.08); border-color:rgba(245,158,11,.25);">
+        <div class="flow-n" style="background:var(--amber);">2</div>
+        <div class="flow-t">3条件で候補を絞る</div>
+        <div class="flow-d">①週1回以上 ②手順が毎回同じ ③入出力のパターンが明確</div>
+      </div>
+      <div class="flow-s" style="background:rgba(34,197,94,.08); border-color:rgba(34,197,94,.25);">
+        <div class="flow-n" style="background:#22c55e;">3</div>
+        <div class="flow-t">トップ3を選ぶ</div>
+        <div class="flow-d">自動化イメージと月間削減時間を書いて優先順位を決める</div>
+      </div>
+      <div class="flow-s" style="background:rgba(99,102,241,.1); border-color:rgba(99,102,241,.3);">
+        <div class="flow-n" style="background:var(--indigo);">4</div>
+        <div class="flow-t">第6回で実際に自動化</div>
+        <div class="flow-d">トップ1を選びAIエージェントで動くソリューションを構築</div>
+      </div>
+    </div>
+
+    <!-- Sheet①: ワークフロー一覧表 -->
+    <div class="c c-dark" style="padding:0; overflow:hidden; margin-bottom:10px;">
+      <div style="background:rgba(59,130,246,.12); padding:6px 14px; border-bottom:1px solid rgba(59,130,246,.15); display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:10px; font-weight:700; color:var(--blue-l); letter-spacing:.4px;">シート① ワークフロー一覧表　—　自分が定期的に繰り返しているワークフローをすべて書き出す</span>
+        <span style="font-size:9px; color:rgba(255,255,255,.35);">3条件すべてに当てはまる行に ◯ → その中からトップ3を囲む</span>
+      </div>
+      <table class="tbl" style="font-size:10px;">
+        <thead>
+          <tr>
+            <th style="width:17%;">ワークフロー名</th>
+            <th style="width:16%;">トリガー（何がきっかけか）</th>
+            <th style="width:10%; text-align:center;">繰り返し頻度</th>
+            <th style="width:8%; text-align:center;">手順<br>ステップ数</th>
+            <th style="width:14%;">入力データ（受け取るもの）</th>
+            <th style="width:14%;">成果物（出力するもの）</th>
+            <th style="width:10%; text-align:center;">1回の<br>所要時間</th>
+            <th style="width:11%; text-align:center;">手順は<br>毎回同じ？</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(34,197,94,.04);">
+            <td style="font-weight:600; color:#fff;">日報・運行報告書の作成</td>
+            <td style="color:rgba(255,255,255,.65);">業務終了・帰庫</td>
+            <td style="text-align:center; color:#4ade80; font-weight:700;">日次</td>
+            <td style="text-align:center; color:rgba(255,255,255,.65);">5〜6</td>
+            <td style="color:rgba(255,255,255,.65);">走行記録・積荷メモ</td>
+            <td style="color:rgba(255,255,255,.65);">Word/紙の報告書</td>
+            <td style="text-align:center; color:rgba(255,255,255,.65);">30分</td>
+            <td style="text-align:center; color:#4ade80; font-weight:700;">◯</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,.04);">
+            <td style="font-weight:600; color:#fff;">荷主へのメール報告</td>
+            <td style="color:rgba(255,255,255,.65);">配送完了・遅延発生</td>
+            <td style="text-align:center; color:#4ade80; font-weight:700;">週3〜5回</td>
+            <td style="text-align:center; color:rgba(255,255,255,.65);">3〜4</td>
+            <td style="color:rgba(255,255,255,.65);">配送実績・状況メモ</td>
+            <td style="color:rgba(255,255,255,.65);">メール本文</td>
+            <td style="text-align:center; color:rgba(255,255,255,.65);">20分</td>
+            <td style="text-align:center; color:#4ade80; font-weight:700;">◯</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600; color:#fff;">クレーム対応記録</td>
+            <td style="color:rgba(255,255,255,.65);">電話・メールでの申告</td>
+            <td style="text-align:center; color:rgba(255,255,255,.45);">随時</td>
+            <td style="text-align:center; color:rgba(255,255,255,.65);">6〜8</td>
+            <td style="color:rgba(255,255,255,.65);">口頭メモ・写真</td>
+            <td style="color:rgba(255,255,255,.65);">報告書・謝罪文</td>
+            <td style="text-align:center; color:rgba(255,255,255,.65);">45分</td>
+            <td style="text-align:center; color:rgba(255,255,255,.35);">△</td>
+          </tr>
+          <tr>
+            <td style="color:rgba(255,255,255,.25); font-style:italic;" colspan="8">（自分の業務を続けて記入…）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Sheet②: トップ3 -->
+    <div class="c c-dark" style="padding:0; overflow:hidden; margin-bottom:10px;">
+      <div style="background:rgba(245,158,11,.1); padding:6px 14px; border-bottom:1px solid rgba(245,158,11,.15);">
+        <span style="font-size:10px; font-weight:700; color:#fbbf24; letter-spacing:.4px;">自動化したいワークフロー トップ3　—　3条件に当てはまるものから選んで記入</span>
+      </div>
+      <table class="tbl" style="font-size:10.5px;">
+        <thead>
+          <tr>
+            <th style="width:4%; text-align:center;">#</th>
+            <th style="width:22%;">ワークフロー名</th>
+            <th style="width:58%;">自動化イメージ（「こうなったら楽になる」）</th>
+            <th style="width:16%; text-align:center;">月間削減時間（見込み）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center; font-weight:900; color:#fbbf24;">1</td>
+            <td style="font-weight:600; color:#fff;">日報・運行報告書の作成</td>
+            <td style="color:rgba(255,255,255,.7);">走行記録を貼り付けるだけで報告書の文章が自動で出てくる</td>
+            <td style="text-align:center; color:#4ade80; font-weight:700;">約10時間</td>
+          </tr>
+          <tr>
+            <td style="text-align:center; font-weight:900; color:#fbbf24;">2</td>
+            <td style="font-weight:600; color:#fff;">荷主へのメール報告</td>
+            <td style="color:rgba(255,255,255,.7);">状況を箇条書きで入れるだけで丁寧なメール文が完成する</td>
+            <td style="text-align:center; color:#4ade80; font-weight:700;">約6時間</td>
+          </tr>
+          <tr>
+            <td style="text-align:center; font-weight:900; color:rgba(255,255,255,.4);">3</td>
+            <td style="color:rgba(255,255,255,.25); font-style:italic;">（自分で記入）</td>
+            <td style="color:rgba(255,255,255,.2); font-style:italic;">（自分で記入）</td>
+            <td style="text-align:center; color:rgba(255,255,255,.2); font-style:italic;">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- =============== SLIDE 9: ビフォーアフター =============== -->
+<div class="slide bg-navy" id="s9">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">09 / 11</div></div>
   <div class="sb">
     <div class="label lb">BEFORE → AFTER</div>
     <div class="h2">受講前後の<span class="em">業務変化</span></div>
@@ -650,9 +778,9 @@
   </div>
 </div>
 
-<!-- =============== SLIDE 9: プログラム概要 =============== -->
-<div class="slide bg-deep" id="s9">
-  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">09 / 10</div></div>
+<!-- =============== SLIDE 10: プログラム概要 =============== -->
+<div class="slide bg-deep" id="s10">
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">10 / 11</div></div>
   <div class="sb">
     <div class="label lb">PROGRAM & ROI</div>
     <div class="h2">プログラム概要と<span class="em">投資対効果</span></div>
@@ -720,11 +848,11 @@
   </div>
 </div>
 
-<!-- =============== SLIDE 10: CTA =============== -->
-<div class="slide bg-cool" id="s10">
+<!-- =============== SLIDE 11: CTA =============== -->
+<div class="slide bg-cool" id="s11">
   <div class="deco glow-b" style="width:600px;height:600px;left:50%;top:50%;transform:translate(-50%,-50%);"></div>
 
-  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">10 / 10</div></div>
+  <div class="sh"><div class="sh-logo">DX研究所</div><div class="sh-num">11 / 11</div></div>
   <div class="cta-center">
     <div class="label lw" style="margin-bottom:16px;">NEXT STEP</div>
     <div style="font-size:38px; font-weight:900; line-height:1.2; letter-spacing:-.5px; margin-bottom:12px;">
@@ -738,7 +866,7 @@
       <div class="c c-glass" style="text-align:center; padding:18px 12px;">
         <div style="font-size:24px; margin-bottom:6px;">📞</div>
         <div style="font-size:11px; font-weight:600; color:var(--muted); margin-bottom:4px;">お電話</div>
-        <div style="font-size:14px; color:var(--blue-l); font-weight:700;">03-5217-8988</div>
+        <div style="font-size:14px; color:var(--blue-l); font-weight:700;">03-6272-8050</div>
       </div>
       <div class="c c-glass" style="text-align:center; padding:18px 12px;">
         <div style="font-size:24px; margin-bottom:6px;">✉️</div>
@@ -767,7 +895,7 @@
   <button id="prevBtn" onclick="go(-1)" disabled>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
-  <div class="nav-counter" id="counter">1 / 10</div>
+  <div class="nav-counter" id="counter">1 / 11</div>
   <button id="nextBtn" onclick="go(1)">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
@@ -775,7 +903,7 @@
 <div class="dots" id="dots"></div>
 
 <script>
-const T=10;let c=0;
+const T=11;let c=0;
 const ss=document.querySelectorAll('.slide'),pb=document.getElementById('prevBtn'),nb=document.getElementById('nextBtn'),ct=document.getElementById('counter'),pr=document.getElementById('progress'),dt=document.getElementById('dots');
 for(let i=0;i<T;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>jump(i);dt.appendChild(d);}
 function upd(){ss.forEach((s,i)=>{s.classList.remove('active','prev');if(i===c)s.classList.add('active');else if(i<c)s.classList.add('prev');});document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===c));ct.textContent=(c+1)+' / '+T;pb.disabled=c===0;nb.disabled=c===T-1;pr.style.width=((c+1)/T*100)+'%';}
