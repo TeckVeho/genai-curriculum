@@ -28,10 +28,17 @@
 - [ ] [様式第1-3号](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.mhlw.go.jp%2Fcontent%2F11800000%2F001666063.xlsx&wdOrigin=BROWSELINK)：事業展開等実施計画
 - [ ] [様式第3-1号](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.mhlw.go.jp%2Fcontent%2F11800000%2F001468820.xlsx&wdOrigin=BROWSELINK)：対象労働者一覧（定額制は第3-2号）
 - [ ] [様式第11号](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.mhlw.go.jp%2Fcontent%2F11800000%2F001666072.xlsx&wdOrigin=BROWSELINK)：事前確認書
+- [ ] [様式第28号（R8.5）](https://www.mhlw.go.jp/content/11800000/001699857.docx)：受講料等の価格設定に関する疎明書
+
+### 運営側から受け取る添付資料
+
+- [ ] 訓練カリキュラム・受講案内
+- [ ] 契約書または申込書の写し
+- [ ] 営業・説明資料一式（助成金案内等）
 
 ### 管轄労働局（またはハローワーク）へ提出
 
-- [ ] 上記書類＋運営側から受け取った資料（カリキュラム・契約書等）を一括提出する
+- [ ] 上記書類＋運営側から受け取った資料を一括提出する
   - 郵送の場合は**消印不可・到達日**が基準
 
 ---
