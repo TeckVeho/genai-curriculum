@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>業務棚卸しシート（記入例）</title>
+  <style>
+    :root {
+      --main: #1A3A5C;
+      --accent: #F57C00;
+      --bg: #F5F5F5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 32px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .doc-header {
+      background: var(--main);
+      color: #fff;
+      padding: 10px 20px;
+      margin: -32px -40px 28px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .doc-header .badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--main);
+      border-left: 5px solid var(--main);
+      padding: 8px 14px;
+      margin: 28px 0 18px;
+      background: #EEF2F8;
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: bold;
+      color: var(--main);
+      border-bottom: 2px solid var(--main);
+      padding-bottom: 4px;
+      margin: 24px 0 12px;
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--main);
+      margin: 18px 0 8px;
+      padding-left: 10px;
+      border-left: 3px solid var(--accent);
+    }
+    h4 { font-size: 13px; font-weight: bold; color: #333; margin: 14px 0 6px; }
+    p { margin: 8px 0; }
+    ul, ol { padding-left: 20px; margin: 8px 0; }
+    li { margin: 3px 0; }
+    a { color: var(--main); }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 14px 0;
+      font-size: 13px;
+    }
+    th {
+      background: var(--main);
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: bold;
+    }
+    td {
+      border: 1px solid #C0CDD8;
+      padding: 7px 12px;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #F0F4F8; }
+    code {
+      background: #F0F4F8;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 12px;
+    }
+    pre {
+      background: #1E2A3A;
+      color: #E8F0FE;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+    pre code { background: none; color: inherit; padding: 0; font-size: 12px; }
+    blockquote {
+      border-left: 4px solid var(--accent);
+      background: #FFF8F0;
+      padding: 10px 16px;
+      margin: 12px 0;
+      color: #444;
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p { margin: 0; }
+    hr { border: none; border-top: 1px solid #D0D8E0; margin: 22px 0; }
+    strong { color: var(--main); }
+    .doc-footer {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #D0D8E0;
+      font-size: 11px;
+      color: #888;
+      text-align: right;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="doc-header">
+    <span class="badge">配布資料</span>
+    <span>物流事務DX人材育成プログラム「Claude AI活用・業務変革コース（全12回）」</span>
+  </div>
+  <h1>ワークフロー棚卸しシート（記入例）</h1>
+<blockquote>
+<p><strong>講師用・受講者参考用サンプルです。物流事務（運送会社・一般事務職）を想定した記入例です。</strong></p>
+</blockquote>
+<p><strong>氏名：</strong> 山田 花子（例）　　<strong>記入日：</strong> 2026年○月○日</p>
+<hr>
+<h2>シート① ワークフロー一覧表（記入例）</h2>
+<table>
+<thead>
+<tr>
+<th>ワークフロー名</th>
+<th>トリガー（何がきっかけで始まるか）</th>
+<th>繰り返し頻度</th>
+<th>手順ステップ数</th>
+<th>入力データ</th>
+<th>成果物</th>
+<th>所要時間</th>
+<th>毎回同じ手順？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>月次請求書の作成・送付</td>
+<td>月末の締め日</td>
+<td>月次</td>
+<td>5ステップ（台帳確認→金額集計→請求書作成→PDF化→送付メール作成）</td>
+<td>売上台帳・納品書控え</td>
+<td>請求書PDF・送付メール</td>
+<td>2〜3時間</td>
+<td>はい</td>
+</tr>
+<tr>
+<td>配送状況の問い合わせ回答</td>
+<td>顧客からの問い合わせメール受信</td>
+<td>週15〜20件</td>
+<td>3ステップ（システム確認→状況まとめ→返信メール作成）</td>
+<td>問い合わせメール・配送管理システム</td>
+<td>返信メール</td>
+<td>5〜10分/件</td>
+<td>はい</td>
+</tr>
+<tr>
+<td>週次配送レポート作成</td>
+<td>毎週月曜日</td>
+<td>週次</td>
+<td>4ステップ（データ抽出→集計→異常値確認→レポート作成）</td>
+<td>配送管理システムのデータ</td>
+<td>上司向けサマリーレポート</td>
+<td>40〜60分</td>
+<td>はい</td>
+</tr>
+<tr>
+<td>取引先へのお詫びメール作成</td>
+<td>納品遅延・トラブル発生時</td>
+<td>週2〜3回</td>
+<td>2ステップ（状況確認→メール作成）</td>
+<td>電話メモ・上司の口頭指示</td>
+<td>お詫びメール</td>
+<td>15〜20分</td>
+<td>都度違う</td>
+</tr>
+<tr>
+<td>社内日報の入力</td>
+<td>毎日の業務終了時</td>
+<td>日次</td>
+<td>2ステップ（作業内容まとめ→システム入力）</td>
+<td>自分の作業記録（手書きメモ）</td>
+<td>日報（システム登録）</td>
+<td>10〜15分</td>
+<td>はい</td>
+</tr>
+<tr>
+<td>伝票・納品書のデータ入力</td>
+<td>伝票・納品書の到着</td>
+<td>週3〜4回</td>
+<td>3ステップ（伝票確認→データ入力→照合チェック）</td>
+<td>紙の伝票・納品書</td>
+<td>システムへの入力データ</td>
+<td>30〜60分</td>
+<td>はい</td>
+</tr>
+<tr>
+<td>社内会議の議事録作成</td>
+<td>週次定例会議の終了後</td>
+<td>週次</td>
+<td>3ステップ（メモ整理→議事録作成→共有）</td>
+<td>手書きメモ・会議内容</td>
+<td>議事録（Word）</td>
+<td>40〜60分</td>
+<td>はい</td>
+</tr>
+<tr>
+<td>新人・アルバイトへの業務説明</td>
+<td>新人の入社・配属時</td>
+<td>不定期（月1〜2回）</td>
+<td>説明のみ</td>
+<td>新人からの質問</td>
+<td>業務手順の説明</td>
+<td>30〜45分</td>
+<td>都度違う</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>自動化したいワークフロー トップ3（記入例）</h2>
+<p>（3条件に当てはまるものを選択：①繰り返し頻度が高い ②手順が毎回同じ ③入出力パターンが明確）</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>ワークフロー名</th>
+<th>自動化イメージ（「こうなったら楽になる」）</th>
+<th>月間削減時間（見込み）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>月次請求書の作成・送付（月次・5ステップ・はい）</td>
+<td>CSVを1つ投入するだけで、取引先ごとの請求書PDFと送付メール文面が一括生成される</td>
+<td>月2.5時間</td>
+</tr>
+<tr>
+<td>2</td>
+<td>週次配送レポート作成（週次・4ステップ・はい）</td>
+<td>スケジュールタスクで毎週月曜に自動実行。遅延率・異常値も自動検出してレポート化</td>
+<td>月4時間</td>
+</tr>
+<tr>
+<td>3</td>
+<td>配送状況の問い合わせ回答（週15〜20件・3ステップ・はい）</td>
+<td>追跡番号と状況を入れたら、返信メールの文面が自動生成される</td>
+<td>月3〜5時間</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>今日のデモを見て感じたこと・やってみたいこと（記入例）</h2>
+<p>請求書処理が1回の指示で全社分まとまて出てくるのに驚いた。毎月の月末作業がほぼなくなるイメージが湧いた。週次レポートのスケジュール実行も、自分が何もしなくても毎週届くのがすごい。自分の業務でも絶対作ってみたい。</p>
+<hr>
+<blockquote>
+<p><strong>★ 次回予告（第02回）：</strong> なぜ今世界中でClaudeが選ばれているのか、そしてClaudeの主要機能を体験する ── <strong>Claude概論</strong>を60分でお届けします。次回までに Claude の無料アカウントを作っておいてください（<a href="https://claude.ai">https://claude.ai</a>）。<br><strong>★ 第06回（ワークショップ）では、</strong> このシートをもとに自動化するワークフローを1つに絞り、Cowork タスク設計書を作成します（第06回配布）。</p>
+</blockquote>
+
+
+  <div class="doc-footer">DX研究所 &nbsp;|&nbsp; Claude AI活用・業務変革コース &nbsp;|&nbsp; 配布資料</div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coworkトラブルシューティング参考資料</title>
+  <style>
+    :root {
+      --main: #1A3A5C;
+      --accent: #F57C00;
+      --bg: #F5F5F5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 32px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .doc-header {
+      background: var(--main);
+      color: #fff;
+      padding: 10px 20px;
+      margin: -32px -40px 28px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .doc-header .badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--main);
+      border-left: 5px solid var(--main);
+      padding: 8px 14px;
+      margin: 28px 0 18px;
+      background: #EEF2F8;
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: bold;
+      color: var(--main);
+      border-bottom: 2px solid var(--main);
+      padding-bottom: 4px;
+      margin: 24px 0 12px;
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--main);
+      margin: 18px 0 8px;
+      padding-left: 10px;
+      border-left: 3px solid var(--accent);
+    }
+    h4 { font-size: 13px; font-weight: bold; color: #333; margin: 14px 0 6px; }
+    p { margin: 8px 0; }
+    ul, ol { padding-left: 20px; margin: 8px 0; }
+    li { margin: 3px 0; }
+    a { color: var(--main); }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 14px 0;
+      font-size: 13px;
+    }
+    th {
+      background: var(--main);
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: bold;
+    }
+    td {
+      border: 1px solid #C0CDD8;
+      padding: 7px 12px;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #F0F4F8; }
+    code {
+      background: #F0F4F8;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 12px;
+    }
+    pre {
+      background: #1E2A3A;
+      color: #E8F0FE;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+    pre code { background: none; color: inherit; padding: 0; font-size: 12px; }
+    blockquote {
+      border-left: 4px solid var(--accent);
+      background: #FFF8F0;
+      padding: 10px 16px;
+      margin: 12px 0;
+      color: #444;
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p { margin: 0; }
+    hr { border: none; border-top: 1px solid #D0D8E0; margin: 22px 0; }
+    strong { color: var(--main); }
+    .doc-footer {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #D0D8E0;
+      font-size: 11px;
+      color: #888;
+      text-align: right;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="doc-header">
+    <span class="badge">配布資料</span>
+    <span>物流事務DX人材育成プログラム「Claude AI活用・業務変革コース（全12回）」</span>
+  </div>
+  <h1>Cowork トラブルシューティング参考資料</h1>
+<blockquote>
+<p><strong>利用対象：</strong> 主に講師用ですが、受講者がセルフで問題解決する際にも使えます。<br>第07〜11回のワークショップで手元に置いておいてください。</p>
+</blockquote>
+<hr>
+<h2>よくあるトラブルと対処法</h2>
+<h3>トラブル①：Cowork タブが表示されない</h3>
+<p><strong>症状：</strong> Claude Desktop を開いても「Cowork」タブが見当たらない。</p>
+<p><strong>対処法：</strong></p>
+<ol>
+<li>Claude Desktop が最新バージョンか確認（設定 → アプリ情報）</li>
+<li>アプリを完全に終了して再起動する</li>
+<li>Pro 以上のプランでログインしているか確認（無料版では Cowork は利用不可）</li>
+</ol>
+<hr>
+<h3>トラブル②：タスクが完了しない / 途中で止まる</h3>
+<p><strong>症状：</strong> タスクを送信してから長時間経っても完了しない。</p>
+<p><strong>対処法：</strong></p>
+<ol>
+<li>数分は待つ（複雑なタスクは処理に時間がかかる場合がある）</li>
+<li>タスクの途中で「状況を教えてください」とメッセージを送る</li>
+<li>指示が複雑すぎる場合は、タスクを分割して小さく実行する</li>
+<li>Claude Desktop を再起動してやり直す</li>
+</ol>
+<hr>
+<h3>トラブル③：成果物ファイルが見つからない</h3>
+<p><strong>症状：</strong> タスクは完了したが、指定フォルダにファイルがない。</p>
+<p><strong>対処法：</strong></p>
+<ol>
+<li>Claude に「ファイルをどこに保存しましたか？」と聞く</li>
+<li>フォルダ名のスペルミスがないか確認する</li>
+<li>出力先を明示的に指定し直す：「デスクトップの『研修出力』フォルダに保存してください」</li>
+</ol>
+<hr>
+<h3>トラブル④：Excel の関数・書式が期待と違う</h3>
+<p><strong>症状：</strong> SUM関数の範囲が違う、色が指定と違う等。</p>
+<p><strong>対処法：</strong></p>
+<pre><code>Excel の以下の点を修正してください：
+- 〇〇セルの SUM 関数の範囲を B2:B10 に変更
+- ヘッダー行の背景色を紺色（#003366）に変更
+※ それ以外の部分は変更しないでください。
+</code></pre>
+<hr>
+<h3>トラブル⑤：意図と違う変更をされた</h3>
+<p><strong>症状：</strong> 「書式だけ変えて」と指示したら、データの内容まで変わってしまった。</p>
+<p><strong>対処法：</strong></p>
+<pre><code>【変更してほしいこと】ヘッダー行の背景色を青にしてください。
+【変更しないでほしいこと】データの内容・関数・その他の書式は一切変更しないでください。
+</code></pre>
+<blockquote>
+<p><strong>コツ：</strong> 「変更してほしいこと」と「変更しないでほしいこと」を明示する</p>
+</blockquote>
+<hr>
+<h3>トラブル⑥：同じ指示で毎回違う結果が出る</h3>
+<p><strong>症状：</strong> 同じタスクを実行しても出力の構成や文面が微妙に違う。</p>
+<p><strong>対処法：</strong></p>
+<ol>
+<li>指示文に出力の構造を明示する：「必ず①②③の順序で、以下のフォーマットで出力してください」</li>
+<li>プロジェクトの指示文に条件を入れると、毎回適用されて安定する</li>
+<li>完全に同一の出力は保証されないが、構造・要素の指定で大幅に改善する</li>
+</ol>
+<hr>
+<h3>トラブル⑦：ファイルの削除確認が出て進めない</h3>
+<p><strong>症状：</strong> Cowork がファイル削除の許可を求めてくるが、削除してよいかわからない。</p>
+<p><strong>対処法：</strong></p>
+<ol>
+<li>削除対象のファイル名を確認し、不要なものであれば「Allow」で許可</li>
+<li>不安な場合は「削除しないでください。新しいファイルとして別名で保存してください」と指示</li>
+</ol>
+<hr>
+<h2>指示文のコツ（効果的な修正指示の書き方）</h2>
+<table>
+<thead>
+<tr>
+<th>悪い例</th>
+<th>良い例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>「動きません」</td>
+<td>「タスクが完了してもファイルが生成されません」</td>
+</tr>
+<tr>
+<td>「間違っています」</td>
+<td>「集計の合計行が B列だけ抜けています。B列にも SUM 関数を入れてください」</td>
+</tr>
+<tr>
+<td>「直してください」</td>
+<td>「〇〇の部分だけを修正してください。△△は変えないでください」</td>
+</tr>
+<tr>
+<td>「もっとよくして」</td>
+<td>「ヘッダー行の背景色を紺色、文字色を白にしてください」</td>
+</tr>
+</tbody></table>
+
+
+  <div class="doc-footer">DX研究所 &nbsp;|&nbsp; Claude AI活用・業務変革コース &nbsp;|&nbsp; 配布資料</div>
+</body>
+</html>

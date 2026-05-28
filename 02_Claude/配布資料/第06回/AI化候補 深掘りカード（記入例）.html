@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI化候補 深掘りカード（記入例）</title>
+  <style>
+    :root {
+      --main: #1A3A5C;
+      --accent: #F57C00;
+      --bg: #F5F5F5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 32px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .doc-header {
+      background: var(--main);
+      color: #fff;
+      padding: 10px 20px;
+      margin: -32px -40px 28px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .doc-header .badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--main);
+      border-left: 5px solid var(--main);
+      padding: 8px 14px;
+      margin: 28px 0 18px;
+      background: #EEF2F8;
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: bold;
+      color: var(--main);
+      border-bottom: 2px solid var(--main);
+      padding-bottom: 4px;
+      margin: 24px 0 12px;
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--main);
+      margin: 18px 0 8px;
+      padding-left: 10px;
+      border-left: 3px solid var(--accent);
+    }
+    h4 { font-size: 13px; font-weight: bold; color: #333; margin: 14px 0 6px; }
+    p { margin: 8px 0; }
+    ul, ol { padding-left: 20px; margin: 8px 0; }
+    li { margin: 3px 0; }
+    a { color: var(--main); }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 14px 0;
+      font-size: 13px;
+    }
+    th {
+      background: var(--main);
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: bold;
+    }
+    td {
+      border: 1px solid #C0CDD8;
+      padding: 7px 12px;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #F0F4F8; }
+    code {
+      background: #F0F4F8;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 12px;
+    }
+    pre {
+      background: #1E2A3A;
+      color: #E8F0FE;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+    pre code { background: none; color: inherit; padding: 0; font-size: 12px; }
+    blockquote {
+      border-left: 4px solid var(--accent);
+      background: #FFF8F0;
+      padding: 10px 16px;
+      margin: 12px 0;
+      color: #444;
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p { margin: 0; }
+    hr { border: none; border-top: 1px solid #D0D8E0; margin: 22px 0; }
+    strong { color: var(--main); }
+    .doc-footer {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #D0D8E0;
+      font-size: 11px;
+      color: #888;
+      text-align: right;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="doc-header">
+    <span class="badge">配布資料</span>
+    <span>物流事務DX人材育成プログラム「Claude AI活用・業務変革コース（全12回）」</span>
+  </div>
+  <h1>AI化候補 深掘りカード（記入例）</h1>
+<blockquote>
+<p><strong>講師用・受講者参考用サンプルです。物流事務（運送会社・一般事務職）を想定した記入例です。</strong></p>
+</blockquote>
+<p><strong>氏名：</strong> 山田 花子（例）　　<strong>記入日：</strong> 2026年○月○日</p>
+<hr>
+<h2>取り組む業務（1つに絞る）</h2>
+<p><strong>業務名：</strong> 取引先へのお詫びメール作成</p>
+<blockquote>
+<p>第01回の棚卸しトップ3（お詫びメール・問い合わせ回答・伝票入力）のうち、<br>「週2〜3回・★★★★・毎回一から書き直している」を理由に最優先で選択。</p>
+</blockquote>
+<hr>
+<h2>深掘りカード（記入例）</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>この業務が発生するきっかけ（トリガー）</td>
+<td>配送遅延・誤配送・数量不足などのクレームや問題が発生したとき。電話や上司からの口頭指示で発生する</td>
+</tr>
+<tr>
+<td>手順（ざっくり3〜5ステップ）</td>
+<td>①状況をメモで整理 → ②Outlookを開く → ③件名・本文を一から入力 → ④上司に確認依頼 → ⑤送信</td>
+</tr>
+<tr>
+<td>判断が必要な箇所（毎回変わる部分）</td>
+<td>遅延理由・謝罪の重さ・代替提案の有無（ケースによって文体・内容が変わる）</td>
+</tr>
+<tr>
+<td>パターン化できそうな箇所（毎回ほぼ同じ部分）</td>
+<td>書き出し・締めの挨拶・お詫びの表現・会社名・担当者名の形式</td>
+</tr>
+<tr>
+<td>ミスが起きやすい箇所</td>
+<td>宛先の敬称ミス・原因説明の曖昧さ・送信前確認の漏れ</td>
+</tr>
+<tr>
+<td>理想の状態（「こうなったら最高」）</td>
+<td>「A社・納品遅延2日・天候による」と指示するだけで、適切なお詫びメールが自動生成され、ファイルとして保存される</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>ソリューション方針（記入例）</h2>
+<pre><code>Q1. 解決したい業務の成果物は何か？
+  → 文書・メール（テキストファイルとして出力）
+
+Q2. その作業は定期的に繰り返すか？
+  → いいえ（問題発生時に都度実行）
+</code></pre>
+<p><strong>成果物の種類：　✅ 文書生成</strong><br><strong>定期実行：</strong> しない<br><strong>プロジェクト化：</strong> する（お詫びメールの前提条件・文体ルールを毎回適用したい）</p>
+<blockquote>
+<p>理由：テンプレートと変数（会社名・遅延理由・日数）の組み合わせで対応可能。プロジェクトに文体ルールを保存しておけば、毎回指定する手間がなくなる。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>★ このあとの設計ワーク：</strong> 「Cowork タスク設計書」に進んでください（第06回配布資料）。<br>上記の深掘りカードの「パターン化できそうな箇所」と「理想の状態」が、そのまま Cowork 指示文の下書きになります。</p>
+</blockquote>
+
+
+  <div class="doc-footer">DX研究所 &nbsp;|&nbsp; Claude AI活用・業務変革コース &nbsp;|&nbsp; 配布資料</div>
+</body>
+</html>
