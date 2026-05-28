@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Pages デプロイ手順書</title>
+  <style>
+    :root {
+      --main: #005BAC;
+      --navy: #02396B;
+      --orange: #F58220;
+      --bg: #F5F5F5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 32px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    /* ヘッダーバー */
+    .doc-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 10px 20px;
+      margin: -32px -40px 28px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .doc-header .badge {
+      background: var(--orange);
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    /* 見出し */
+    h1 {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--navy);
+      border-left: 5px solid var(--main);
+      padding: 8px 14px;
+      margin: 28px 0 18px;
+      background: #EFF5FC;
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: bold;
+      color: var(--main);
+      border-bottom: 2px solid var(--main);
+      padding-bottom: 4px;
+      margin: 24px 0 12px;
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--navy);
+      margin: 18px 0 8px;
+      padding-left: 10px;
+      border-left: 3px solid var(--orange);
+    }
+    h4 {
+      font-size: 13px;
+      font-weight: bold;
+      color: #333;
+      margin: 14px 0 6px;
+    }
+    /* 本文 */
+    p { margin: 8px 0; }
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+    li { margin: 3px 0; }
+    /* リンク */
+    a { color: var(--main); }
+    a:hover { text-decoration: underline; }
+    /* テーブル */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 14px 0;
+      font-size: 13px;
+    }
+    th {
+      background: var(--navy);
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: bold;
+    }
+    td {
+      border: 1px solid #C8D8E8;
+      padding: 7px 12px;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #F0F5FA; }
+    /* コードブロック */
+    code {
+      background: #F0F4F8;
+      color: #1a1a1a;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 12px;
+    }
+    pre {
+      background: #1E2A3A;
+      color: #E8F0FE;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+      font-size: 12px;
+    }
+    /* 引用ブロック */
+    blockquote {
+      border-left: 4px solid var(--orange);
+      background: #FFF8F0;
+      padding: 10px 16px;
+      margin: 12px 0;
+      color: #444;
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p { margin: 0; }
+    /* 区切り線 */
+    hr {
+      border: none;
+      border-top: 1px solid #D0DCE8;
+      margin: 22px 0;
+    }
+    /* 強調 */
+    strong { color: var(--navy); }
+    /* 記入欄（空テーブルのtd） */
+    td:empty { min-height: 28px; }
+    /* フッター */
+    .doc-footer {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #D0DCE8;
+      font-size: 11px;
+      color: #888;
+      text-align: right;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="doc-header">
+    <span class="badge">配布資料</span>
+    <span>物流企業特化AI人材育成プログラム「AI活用・業務変革コース（全12回）」</span>
+  </div>
+  <h1>GitHub Pages 簡易デプロイ手順書</h1>
+<blockquote>
+<p><strong>利用タイミング：</strong> 第09回の仕上げ作業（任意）で使用します。<br>Codex 組が作ったWebアプリを、URLで他の人と共有できる状態にします。<br><strong>スキップしても発表会への参加・デモは可能です。</strong></p>
+</blockquote>
+<hr>
+<h2>GitHub Pages とは</h2>
+<ul>
+<li>GitHub のリポジトリにある HTML/CSS/JavaScript ファイルを、<strong>無料でWeb公開できる機能</strong></li>
+<li>公開後は <code>https://ユーザー名.github.io/リポジトリ名/</code> というURLでアクセス可能</li>
+<li>設定後すぐ（〜数分）で公開される</li>
+</ul>
+<hr>
+<h2>手順</h2>
+<h3>Step 1：GitHub でリポジトリを開く</h3>
+<ol>
+<li>ブラウザで <strong><a href="https://github.com">https://github.com</a></strong> にアクセス</li>
+<li>右上のアイコン → 「Your repositories」をクリック</li>
+<li><code>my-work-tools</code>（または作成したリポジトリ名）をクリック</li>
+</ol>
+<hr>
+<h3>Step 2：Settings（設定）を開く</h3>
+<ol>
+<li>リポジトリ画面の上部タブから <strong>「Settings」</strong> をクリック</li>
+<li>左側メニューを下にスクロールして <strong>「Pages」</strong> をクリック</li>
+</ol>
+<hr>
+<h3>Step 3：GitHub Pages を有効にする</h3>
+<ol>
+<li><strong>「Source」</strong> のドロップダウンで <strong>「Deploy from a branch」</strong> を選択</li>
+<li><strong>Branch</strong> のドロップダウンで <strong>「main」</strong> を選択</li>
+<li>フォルダのドロップダウンで <strong>「/ (root)」</strong> を選択</li>
+<li><strong>「Save」</strong> をクリック</li>
+</ol>
+<hr>
+<h3>Step 4：公開URLを確認する</h3>
+<ol>
+<li><p>設定後1〜3分待つ</p>
+</li>
+<li><p>同じ「Pages」設定画面に戻ると、以下のような表示が出る：</p>
+<blockquote>
+<p><strong>Your site is live at:</strong><br><code>https://あなたのユーザー名.github.io/my-work-tools/</code></p>
+</blockquote>
+</li>
+<li><p>リンクをクリックしてアプリが表示されるか確認する</p>
+</li>
+</ol>
+<p><strong>✅ チェック：</strong> URLでアプリが開いた → □ 完了</p>
+<hr>
+<h3>Step 5：URLを発表・共有に使う</h3>
+<ul>
+<li>発表会（第12回）でこのURLをスクリーンに映してデモすることができます</li>
+<li>チームメンバーへの共有もこのURLで可能（ログイン不要でアクセス可能）</li>
+</ul>
+<hr>
+<h2>よくある問題</h2>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>対処法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URLにアクセスすると「404」が表示される</td>
+<td><code>index.html</code> がリポジトリのルートにあるか確認。Codex で「index.html をルートディレクトリに配置してください」と指示</td>
+</tr>
+<tr>
+<td>設定画面に Pages が表示されない</td>
+<td>リポジトリが Public（公開）になっているか確認。Private の場合は Settings → General → Change repository visibility から変更</td>
+</tr>
+<tr>
+<td>ページが表示されるがCSSが当たっていない（デザインが崩れる）</td>
+<td>CSSファイルのパスが相対パスになっているか Codex に確認させる</td>
+</tr>
+<tr>
+<td>更新しても古いバージョンが表示される</td>
+<td>ブラウザのキャッシュをクリア（Ctrl+Shift+R または Cmd+Shift+R）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>注意事項</h2>
+<blockquote>
+<p>⚠️ <strong>個人情報・機密情報をアプリに入力しないでください</strong><br>GitHub Pages で公開したアプリのURLを知っている人は誰でもアクセスできます。<br>今回のアプリは「業務フロー・入力項目の構成」のデモ用途で使用してください。</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>ローカルストレージのデータは各ブラウザに保存されます</strong><br>GitHub Pages で公開しても、入力データは各自のブラウザに保存されます。<br>複数人でリアルタイムにデータを共有するには、追加のバックエンド設定が必要です（今回のスコープ外）。</p>
+</blockquote>
+<hr>
+<h2>デプロイ後の確認チェックリスト</h2>
+<ul>
+<li><input disabled="" type="checkbox"> GitHub Pages の設定が完了した</li>
+<li><input disabled="" type="checkbox"> 公開URL（<code>https://ユーザー名.github.io/...</code>）でアプリが表示された</li>
+<li><input disabled="" type="checkbox"> フォーム入力 → 一覧表示の基本動作が確認できた</li>
+<li><input disabled="" type="checkbox"> URLを発表準備シートにメモした</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>★ お疲れ様です！</strong> 公開URLを発表準備シートの「デモのURL」欄に記入しておきましょう。</p>
+</blockquote>
+
+
+  <div class="doc-footer">DX研究所 &nbsp;|&nbsp; AI活用・業務変革コース（GPT）&nbsp;|&nbsp; 配布資料</div>
+</body>
+</html>

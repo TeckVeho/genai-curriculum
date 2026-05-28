@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>業務棚卸しシート（記入例）</title>
+  <style>
+    :root {
+      --main: #005BAC;
+      --navy: #02396B;
+      --orange: #F58220;
+      --bg: #F5F5F5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 32px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    /* ヘッダーバー */
+    .doc-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 10px 20px;
+      margin: -32px -40px 28px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .doc-header .badge {
+      background: var(--orange);
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    /* 見出し */
+    h1 {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--navy);
+      border-left: 5px solid var(--main);
+      padding: 8px 14px;
+      margin: 28px 0 18px;
+      background: #EFF5FC;
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: bold;
+      color: var(--main);
+      border-bottom: 2px solid var(--main);
+      padding-bottom: 4px;
+      margin: 24px 0 12px;
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--navy);
+      margin: 18px 0 8px;
+      padding-left: 10px;
+      border-left: 3px solid var(--orange);
+    }
+    h4 {
+      font-size: 13px;
+      font-weight: bold;
+      color: #333;
+      margin: 14px 0 6px;
+    }
+    /* 本文 */
+    p { margin: 8px 0; }
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+    li { margin: 3px 0; }
+    /* リンク */
+    a { color: var(--main); }
+    a:hover { text-decoration: underline; }
+    /* テーブル */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 14px 0;
+      font-size: 13px;
+    }
+    th {
+      background: var(--navy);
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: bold;
+    }
+    td {
+      border: 1px solid #C8D8E8;
+      padding: 7px 12px;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #F0F5FA; }
+    /* コードブロック */
+    code {
+      background: #F0F4F8;
+      color: #1a1a1a;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 12px;
+    }
+    pre {
+      background: #1E2A3A;
+      color: #E8F0FE;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+      font-size: 12px;
+    }
+    /* 引用ブロック */
+    blockquote {
+      border-left: 4px solid var(--orange);
+      background: #FFF8F0;
+      padding: 10px 16px;
+      margin: 12px 0;
+      color: #444;
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p { margin: 0; }
+    /* 区切り線 */
+    hr {
+      border: none;
+      border-top: 1px solid #D0DCE8;
+      margin: 22px 0;
+    }
+    /* 強調 */
+    strong { color: var(--navy); }
+    /* 記入欄（空テーブルのtd） */
+    td:empty { min-height: 28px; }
+    /* フッター */
+    .doc-footer {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #D0DCE8;
+      font-size: 11px;
+      color: #888;
+      text-align: right;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="doc-header">
+    <span class="badge">配布資料</span>
+    <span>物流企業特化AI人材育成プログラム「AI活用・業務変革コース（全12回）」</span>
+  </div>
+  <h1>業務棚卸しシート（記入例）</h1>
+<blockquote>
+<p><strong>講師用・受講者参考用サンプルです。物流企業（運送会社・職種横断）を想定した記入例です。</strong></p>
+</blockquote>
+<p><strong>氏名：</strong> 山田 花子（例）　　<strong>記入日：</strong> 2026年○月○日</p>
+<hr>
+<h2>シート① 業務一覧表（記入例）</h2>
+<table>
+<thead>
+<tr>
+<th>業務名</th>
+<th>週の頻度</th>
+<th>1回の所要時間</th>
+<th>負荷度 ★1〜5</th>
+<th>大変な理由</th>
+<th>使用ツール</th>
+<th>インプット（何を受け取るか）</th>
+<th>アウトプット（何を渡すか）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>取引先へのお詫びメール作成</td>
+<td>週2〜3回</td>
+<td>15〜20分</td>
+<td>★★★★</td>
+<td>毎回一から文章を考えるのが苦痛。状況によって書き方が違う</td>
+<td>メール（Outlook）</td>
+<td>電話メモ・上司の口頭指示</td>
+<td>取引先へのメール</td>
+</tr>
+<tr>
+<td>月次請求書の作成・送付</td>
+<td>月1回</td>
+<td>2〜3時間</td>
+<td>★★★★★</td>
+<td>件数が多く転記ミスが怖い。抜け漏れチェックに時間がかかる</td>
+<td>Excel・郵送</td>
+<td>売上台帳・納品書控え</td>
+<td>請求書（PDF／郵送）</td>
+</tr>
+<tr>
+<td>社内日報の入力</td>
+<td>毎日</td>
+<td>10〜15分</td>
+<td>★★</td>
+<td>書く内容がいつも似たり寄ったりで考える時間が無駄</td>
+<td>社内システム</td>
+<td>自分の作業記録（手書きメモ）</td>
+<td>日報（システム登録）</td>
+</tr>
+<tr>
+<td>新人・アルバイトへの業務説明</td>
+<td>週1〜2回</td>
+<td>30〜45分</td>
+<td>★★★</td>
+<td>毎回同じことを口頭で説明するのが非効率。属人化している</td>
+<td>口頭・紙マニュアル</td>
+<td>新人からの質問</td>
+<td>業務手順の説明</td>
+</tr>
+<tr>
+<td>電話対応・折り返し管理</td>
+<td>毎日10〜15件</td>
+<td>3〜5分／件</td>
+<td>★★★</td>
+<td>折り返し連絡のメモが散在し、漏れが発生することがある</td>
+<td>紙のメモ帳</td>
+<td>電話口での顧客情報</td>
+<td>担当者への伝言・折り返し電話</td>
+</tr>
+<tr>
+<td>配送状況の問い合わせ回答</td>
+<td>週15〜20件</td>
+<td>5〜10分／件</td>
+<td>★★★★</td>
+<td>毎回システムを確認して同じ形式の返信メールを書く</td>
+<td>メール・配送管理システム</td>
+<td>顧客からの問い合わせメール</td>
+<td>配送状況の返信メール</td>
+</tr>
+<tr>
+<td>社内会議の議事録作成</td>
+<td>週1回</td>
+<td>40〜60分</td>
+<td>★★★</td>
+<td>聞きながら書くのが難しく、会議後に思い出しながら書くのが大変</td>
+<td>Word</td>
+<td>手書きメモ・会議内容</td>
+<td>議事録（Word）</td>
+</tr>
+<tr>
+<td>伝票・納品書のデータ入力</td>
+<td>週3〜4回</td>
+<td>30〜60分</td>
+<td>★★★★</td>
+<td>入力量が多く単純作業だが集中力がいる。転記ミスが起きやすい</td>
+<td>Excel・基幹システム</td>
+<td>紙の伝票・納品書</td>
+<td>システムへの入力データ</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>AIで楽にしたい業務 トップ3（記入例）</h2>
+<p>（負荷度★4以上・頻度が高いものを選択）</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>業務名</th>
+<th>AI化イメージ（「こうなったら楽になる」）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>取引先へのお詫びメール作成（毎週複数回・15〜20分・★★★★）</td>
+<td>「A社・納品遅延2日・天候による」と入力するだけで、お詫びメールの文面が自動で出てきてほしい</td>
+</tr>
+<tr>
+<td>2</td>
+<td>配送状況の問い合わせ回答（週15〜20件・5〜10分・★★★★）</td>
+<td>追跡番号と状況を入れたら、返信メールの文章を作ってくれたら毎回コピペするだけで済む</td>
+</tr>
+<tr>
+<td>3</td>
+<td>伝票・納品書のデータ入力（週3〜4回・30〜60分・★★★★）</td>
+<td>伝票の写真を撮ってアップロードしたら、Excelの形式に変換して出してくれたら転記しなくて済む</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>今日のデモを見て感じたこと・やってみたいこと（記入例）</h2>
+<p>メール作成がここまで自動化できるとは思っていなかった。お詫びメールだけでなく、問い合わせ返信も同じように作れそう。自分でも絶対作ってみたい。</p>
+<hr>
+<blockquote>
+<p><strong>★ 次回予告（第02回）：</strong> ChatGPTとは何か、どんなリスクがあるか、どう指示すれば思い通りに動くか ── <strong>ChatGPT概論</strong>を60分でお届けします。次回までに ChatGPT の無料アカウントを作っておいてください（<a href="https://chatgpt.com">https://chatgpt.com</a>）。<br><strong>★ 第06回（ワークショップ）では、</strong> このシートをもとに業務課題を1つに絞り、アプリ仕様書（Codex組）または Skill 定義書（Skills組）を作成します（第06回配布）。</p>
+</blockquote>
+
+
+  <div class="doc-footer">DX研究所 &nbsp;|&nbsp; AI活用・業務変革コース（GPT）&nbsp;|&nbsp; 配布資料</div>
+</body>
+</html>
