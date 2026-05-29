@@ -5,156 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GitHub Pages デプロイ手順書</title>
   <style>
-    :root {
-      --main: #005BAC;
-      --navy: #02396B;
-      --orange: #F58220;
-      --bg: #F5F5F5;
-    }
+    :root { --main: #005BAC; --navy: #02396B; --accent: #F58220; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      color: #1a1a1a;
-      background: #fff;
-      padding: 32px 40px;
-      max-width: 960px;
-      margin: 0 auto;
+      font-size: 14px; line-height: 1.7; color: #1a1a1a;
+      background: #fff; padding: 32px 40px; max-width: 960px; margin: 0 auto;
     }
-    /* ヘッダーバー */
     .doc-header {
-      background: var(--navy);
-      color: #fff;
-      padding: 10px 20px;
-      margin: -32px -40px 28px;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      background: var(--navy); color: #fff; padding: 10px 20px;
+      margin: -32px -40px 28px; font-size: 12px;
+      display: flex; align-items: center; gap: 16px;
     }
     .doc-header .badge {
-      background: var(--orange);
-      color: #fff;
-      padding: 2px 10px;
-      border-radius: 3px;
-      font-weight: bold;
-      font-size: 11px;
-      white-space: nowrap;
+      background: var(--accent); color: #fff; padding: 2px 10px;
+      border-radius: 3px; font-weight: bold; font-size: 11px; white-space: nowrap;
     }
-    /* 見出し */
     h1 {
-      font-size: 22px;
-      font-weight: bold;
-      color: var(--navy);
-      border-left: 5px solid var(--main);
-      padding: 8px 14px;
-      margin: 28px 0 18px;
+      font-size: 22px; font-weight: bold; color: var(--navy);
+      border-left: 5px solid var(--main); padding: 8px 14px; margin: 28px 0 18px;
       background: #EFF5FC;
     }
     h2 {
-      font-size: 17px;
-      font-weight: bold;
-      color: var(--main);
-      border-bottom: 2px solid var(--main);
-      padding-bottom: 4px;
-      margin: 24px 0 12px;
+      font-size: 17px; font-weight: bold; color: var(--main);
+      border-bottom: 2px solid var(--main); padding-bottom: 4px; margin: 24px 0 12px;
     }
     h3 {
-      font-size: 14px;
-      font-weight: bold;
-      color: var(--navy);
-      margin: 18px 0 8px;
-      padding-left: 10px;
-      border-left: 3px solid var(--orange);
+      font-size: 14px; font-weight: bold; color: var(--navy);
+      margin: 18px 0 8px; padding-left: 10px; border-left: 3px solid var(--accent);
     }
-    h4 {
-      font-size: 13px;
-      font-weight: bold;
-      color: #333;
-      margin: 14px 0 6px;
-    }
-    /* 本文 */
     p { margin: 8px 0; }
-    ul, ol {
-      padding-left: 20px;
-      margin: 8px 0;
-    }
+    ul, ol { padding-left: 20px; margin: 8px 0; }
     li { margin: 3px 0; }
-    /* リンク */
     a { color: var(--main); }
-    a:hover { text-decoration: underline; }
-    /* テーブル */
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 14px 0;
-      font-size: 13px;
-    }
-    th {
-      background: var(--navy);
-      color: #fff;
-      padding: 8px 12px;
-      text-align: left;
-      font-weight: bold;
-    }
-    td {
-      border: 1px solid #C8D8E8;
-      padding: 7px 12px;
-      vertical-align: top;
-    }
+    table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 13px; }
+    th { background: var(--navy); color: #fff; padding: 8px 12px; text-align: left; font-weight: bold; }
+    td { border: 1px solid #C8D8E8; padding: 7px 12px; vertical-align: top; }
     tr:nth-child(even) td { background: #F0F5FA; }
-    /* コードブロック */
-    code {
-      background: #F0F4F8;
-      color: #1a1a1a;
-      padding: 1px 6px;
-      border-radius: 3px;
-      font-family: 'Menlo', 'Consolas', monospace;
-      font-size: 12px;
-    }
-    pre {
-      background: #1E2A3A;
-      color: #E8F0FE;
-      padding: 16px;
-      border-radius: 6px;
-      overflow-x: auto;
-      margin: 12px 0;
-    }
-    pre code {
-      background: none;
-      color: inherit;
-      padding: 0;
-      font-size: 12px;
-    }
-    /* 引用ブロック */
+    code { background: #F0F4F8; padding: 1px 6px; border-radius: 3px; font-family: Menlo, Consolas, monospace; font-size: 12px; }
+    pre { background: #1E2A3A; color: #E8F0FE; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 12px 0; }
+    pre code { background: none; color: inherit; padding: 0; }
     blockquote {
-      border-left: 4px solid var(--orange);
-      background: #FFF8F0;
-      padding: 10px 16px;
-      margin: 12px 0;
-      color: #444;
-      border-radius: 0 4px 4px 0;
+      border-left: 4px solid var(--accent); background: #FFF8F0;
+      padding: 10px 16px; margin: 12px 0; color: #444; border-radius: 0 4px 4px 0;
     }
-    blockquote p { margin: 0; }
-    /* 区切り線 */
-    hr {
-      border: none;
-      border-top: 1px solid #D0DCE8;
-      margin: 22px 0;
-    }
-    /* 強調 */
+    hr { border: none; border-top: 1px solid #D0DCE8; margin: 22px 0; }
     strong { color: var(--navy); }
-    /* 記入欄（空テーブルのtd） */
-    td:empty { min-height: 28px; }
-    /* フッター */
     .doc-footer {
-      margin-top: 32px;
-      padding-top: 12px;
-      border-top: 1px solid #D0DCE8;
-      font-size: 11px;
-      color: #888;
-      text-align: right;
+      margin-top: 32px; padding-top: 12px; border-top: 1px solid #D0DCE8;
+      font-size: 11px; color: #555; text-align: right; line-height: 1.6;
     }
     
   </style>
@@ -265,6 +164,7 @@
 </blockquote>
 
 
-  <div class="doc-footer">DX研究所 &nbsp;|&nbsp; AI活用・業務変革コース（GPT）&nbsp;|&nbsp; 配布資料</div>
+  <div class="doc-footer">株式会社Asiart　｜　〒108-0074 東京都港区高輪2-11-21-103<br>
+  TEL：090-8002-9597　MAIL：hidehiko.motegi@asiart-tech.com</div>
 </body>
 </html>
